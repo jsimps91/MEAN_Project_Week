@@ -15,10 +15,19 @@ module.exports = function(app){
         users.login(req, res);
     })
 
+    app.get('/api/show_user', function(req, res){
+        users.getCurrentUser(req, res)
+    })
+
     // board routes
     app.post('/api/create_board', function(req, res){
         console.log("CREATE BOARD MADE IT TO ROUTES", req.body)
         boards.create(req, res)
+    })
+
+    app.get('/api/show_profile/:id', function(req, res){
+        console.log("SHOW USER PROFILE GOING INTO CONTROLLER", req.body)
+        users.showProfile(req, res)
     })
 
     // pin routes

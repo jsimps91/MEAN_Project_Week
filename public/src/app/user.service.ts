@@ -22,6 +22,19 @@ export class UserService {
     .toPromise();
   }
 
+  getCurrentUser(){
+    console.log("GETTING CURRENT USER")
+    return this._http.get('/api/show_user',)
+    .map(data => data.json()).toPromise();   
+  }
+
+  showProfile(id){
+    console.log("SHOW USER PROFILE GOING INTO HTTP REQUEST", id)
+    return this._http.get(`api/show_profile/${id}`)
+    .map(data => data.json())
+    .toPromise();
+  }
+
 
   // logout() {
   //   this.currentUser = '';

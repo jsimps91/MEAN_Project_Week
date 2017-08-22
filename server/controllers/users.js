@@ -43,6 +43,26 @@ module.exports = {
                 res.json(user);
             }
         })
+    },
+
+    getCurrentUser: function(req, res){
+        console.log("USER IN SESSION IS", req.session.currUser)
+        res.json(req.session.currUser)
+    },
+
+    showProfile: function(req, res){
+        console.log("SHOW PROFILE MADE IT TO CONTROLLER")
+        User.findOne({_id: req.params.id})
+        .populate('boards')
+        .exec(function(err, user){
+            if(err){
+                console.log("ERROR:", err)
+            }
+            else{
+                console.log("SUCCESS! USER:", user)
+                res.json(user)
+            }
+        })
     }
 
 };
