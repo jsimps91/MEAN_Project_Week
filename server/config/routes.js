@@ -4,8 +4,12 @@ var pins = require('../controllers/pins.js');
 
 module.exports = function(app){
 
-    app.post('api/create_pin', function(req, res){
+    app.post('/api/create_pin', function(req, res){
         pins.create(req, res);
+    });
+
+    app.post('/api/getSourceData', function(req, res){
+        pins.getSourceData(req, res);
     });
 
     // incorporate Angular for all other routes

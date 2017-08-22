@@ -1,5 +1,19 @@
 var mongoose = require('mongoose');
 var Pin = mongoose.model('Pin');
+var request = require('request');
+var cheerio = require('cheerio');
+
+function collectImages($) {
+    return $("img").map(function() {
+         return $(this).prop("src");
+      }).get();
+ }
+ 
+ function getTitle($) {
+     return $("h1").map(function() {
+         return $(this).text();
+     });
+ }
 
 module.exports = {
     // Example of CRUD operations
@@ -18,6 +32,27 @@ module.exports = {
             }
         });
     }, 
+
+    getSourceData: function (req, res){
+        var url = req.body.url;
+        if (!url.startsWith('http')){
+            url = 'http://' + url;
+        }
+        var images = [];
+        var title;
+        request(url, function(error, response, body){
+            var $ = cheerio.load(body);
+            images = collectImages($);
+            title = getTitle($);
+            if (title[1]){
+                title = title[1];
+            } else {
+                title = title[0];
+            }
+            res.json({"images": images, "title": title});
+        });   
+    },
+
 
     // read: function (req, res){
     //     Pin.find({}, function(err, pins){

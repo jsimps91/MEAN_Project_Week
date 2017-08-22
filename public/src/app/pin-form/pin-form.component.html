@@ -1,3 +1,25 @@
-<p>
-  pin-form works!
-</p>
+<div id='url' [ngClass]="{'hidden':section!=1}">
+    <form #form1Data='ngForm' (submit)='submitUrl()'>
+      <h3>Save from a website:</h3> 
+      <input
+        type="text"
+        name="source_link"
+        required
+        pattern='[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
+        [(ngModel)]='pin.source_link'
+        #source_link = 'ngModel'>
+      <input type="submit" value='Next' [disabled]='!form1Data.valid'>
+      <p class='error' *ngIf='!form1Data.pristine && source_link.errors && source_link.errors.required'>Required</p>
+      <p class='error' *ngIf='source_link.errors && source_link.errors.pattern'>Not a valid URL</p>
+    </form>
+</div>
+
+<div id='photos' [ngClass]="{'hidden':section!=2}">
+  <div class = 'image_display' *ngFor='let image of images'>
+    <a (click)='updateImg(image)'><img src={{image}} alt="" onerror="this.style.display='none'"></a>
+  </div>
+</div>
+
+<div id='board' [ngClass]="{'hidden':section!=3}">
+  <h4>pick a board</h4>
+</div>
