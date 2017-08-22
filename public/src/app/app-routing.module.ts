@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// Import components you will route to here
+import { AppComponent } from "./app.component";
+import { LoginRegComponent } from "./login-reg/login-reg.component";
+import { PinComponent } from "./pin/pin.component";
+import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
-    // All routes here
-    // {path: '', pathMatch: 'full', component:''}, 
+    {path: '', pathMatch: 'full', component: LoginRegComponent, children: []},
+    {path: 'home', pathMatch: 'full', component: HomeComponent, children: []},
   ];
   
   @NgModule({
