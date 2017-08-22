@@ -15,6 +15,7 @@ import { UserService } from "./user.service";
 import { PinService } from "./pin.service";
 import { BoardService } from "./board.service";
 import { LoginRegComponent } from './login-reg/login-reg.component';
+import { PinFormComponent } from './pin-form/pin-form.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginRegComponent } from './login-reg/login-reg.component';
     PinDetailComponent,
     ProfileComponent,
     LoginRegComponent,
+    PinFormComponent,
   ],
   imports: [
     BrowserModule,
