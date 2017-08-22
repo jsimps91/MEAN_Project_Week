@@ -23,9 +23,11 @@ export class UserService {
   }
 
 
-  // logout() {
-  //   this.currentUser = '';
-  // }
+  logout() {
+    return this._http.get('/api/logout')
+    .map(data => data.json())
+    .toPromise();
+  }
 
   // getUser() {
   //   return this.currentUser;

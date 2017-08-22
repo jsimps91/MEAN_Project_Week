@@ -14,6 +14,10 @@ module.exports = function(app){
         users.login(req, res);
     })
 
+    app.get('/api/logout', function(req, res) {
+        users.logout(req, res);
+    })
+
     app.post('api/create_pin', function(req, res){
         pins.create(req, res);
     });

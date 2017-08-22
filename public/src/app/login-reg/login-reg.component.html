@@ -17,7 +17,7 @@
           id="password"
           [(ngModel)]="attemptedUser.password"
         >
-        <!-- <p *ngIf="currentUserArr.length < 1">Invalid login info</p> -->
+        <p *ngIf="loginError">{{ loginError }}</p>
         <input type="submit" name="submit" value="Login">
       </form>    
     </fieldset>
