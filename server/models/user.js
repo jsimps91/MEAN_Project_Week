@@ -10,7 +10,7 @@ var UserSchema = new mongoose.Schema({
     gender: String,
     password: String,
     boards: [{type: Schema.Types.ObjectId, ref: 'Board'}]
-})
+});
 
 mongoose.model('User', UserSchema);
 
