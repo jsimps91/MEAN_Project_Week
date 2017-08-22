@@ -28,16 +28,15 @@ export class LoginRegComponent implements OnInit {
     }
   }
 
-  currentUserArr = []
-  currentUsername;
+  currUser;
 
   registrationAttempt() {
     this._userService.regAttempt(this.user)
       .then(data => {
-        this.currentUserArr = data;
+        this.currUser = data;
         console.log('AT RESPONSE FROM REG');
         console.log(data.fullName);
-        console.log(this.currentUserArr);
+        console.log(this.currUser);
         this._router.navigateByUrl('/home');        
       })
       .catch(err => console.log(err));
@@ -49,15 +48,23 @@ export class LoginRegComponent implements OnInit {
     password: ''
   }
 
+  loginError;
+
   loginAttempt() {
     console.log("ATTEMPTING LOGIN");
     this._userService.loginAttempt(this.attemptedUser)
-      .then(userArr => {
-        if (userArr.length >= 1) {
-          this._router.navigateByUrl('/home');
+      .then(resData => {
+        if (resData.error) {
+          this.loginError = resData.error;
         } else {
-          this.currentUserArr = userArr;          
+          this.currUser = resData;
+          this._router.navigateByUrl('/home');
         }
+        // if (userArr.length >= 1) {
+        //   this._router.navigateByUrl('/home');
+        // } else {
+        //   this.currentUserArr = userArr;          
+        // }
       }).catch(err => console.log(err));
 
   }

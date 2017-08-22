@@ -10,12 +10,14 @@ import { PinFormComponent } from "./pin-form/pin-form.component";
 import { BoardFormComponent } from "./board-form/board-form.component";
 
 
+
 const routes: Routes = [
     {path: '', pathMatch: 'full', component: LoginRegComponent, children: []},
     {path: 'home', pathMatch: 'full', component: HomeComponent, children: []},
-    { path: 'home/newBoard', redirectTo: '/board/new' },
     {path: 'pin/new', component: PinFormComponent},
-    {path: 'board/new', component: BoardFormComponent}
+    {path: 'board/new', component: BoardFormComponent},
+    {path: 'profile/:id', component: ProfileComponent},
+    
 ]
   
   @NgModule({
