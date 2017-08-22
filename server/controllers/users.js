@@ -37,7 +37,7 @@ module.exports = {
                 console.log('ERROR');
             } else {
                 if (user.length > 0) {
-                    req.session.id = user[0]._id;
+                    req.session.currUser = user[0];
                     console.log('SUCCESSFULLY LOGGEDIN USER: ', user);
                 }
                 res.json(user);

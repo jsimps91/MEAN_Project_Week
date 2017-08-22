@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-// require bcrypt if using it for passwords etc
+var Schema = mongoose.Schema;
 
 
 var BoardSchema = new mongoose.Schema({
@@ -15,8 +15,8 @@ var BoardSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    //_user: {type: Schema.Types.ObjectId, ref: 'User'},
-    //pins: [{type: Schema.Types.ObjectId, ref: 'Pin'}]
+    _user: {type: Schema.Types.ObjectId, ref: 'User'},
+    pins: [{type: Schema.Types.ObjectId, ref: 'Pin'}]
 },  
  {timestamps: true});
 
