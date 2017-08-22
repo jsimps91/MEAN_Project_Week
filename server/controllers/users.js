@@ -70,7 +70,7 @@ module.exports = {
 
     getCurrentUser: function(req, res){
         console.log("USER IN SESSION IS", req.session.currUser)
-        res.json(req.session.currUser)
+        res.json(req.session.currUser);
     },
 
     showProfile: function(req, res){
@@ -79,13 +79,13 @@ module.exports = {
         .populate('boards')
         .exec(function(err, user){
             if(err){
-                console.log("ERROR:", err)
+                console.log("ERROR:", err);
             }
             else{
-                console.log("SUCCESS! USER:", user)
-                res.json(user)
+                console.log("SUCCESS! USER:", user);
+                res.json(user);
             }
-        })
+        });
     }
 
 

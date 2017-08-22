@@ -21,5 +21,22 @@
 </div>
 
 <div id='board' [ngClass]="{'hidden':section!=3}">
-  <h4>pick a board</h4>
+    <form #form2Data='ngForm' (submit)='submitDescAndBoard()'>
+        <input
+          type="text"
+          name="description"
+          [(ngModel)]='pin.description'
+          #description = 'ngModel'
+          placeholder = 'Tell us about this Pin...'>
+        <select name="board"
+          required
+          [(ngModel)]="pin.board"
+          #board="ngModel"
+        >
+          <option *ngFor='let board of boards' value={{board._id}}>{{board.title}}-{{board.description}}</option>
+        </select>
+        <input type="submit" value='Save' [disabled]='!form2Data.valid'>
+      </form>
 </div>
+
+<h3>{{pin | json}}</h3>

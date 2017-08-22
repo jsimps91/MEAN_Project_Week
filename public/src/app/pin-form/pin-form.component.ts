@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pin } from "../pin";
 
 import { PinService } from "../pin.service";
+import { BoardService } from "../board.service";
 
 @Component({
   selector: 'app-pin-form',
@@ -14,9 +15,9 @@ export class PinFormComponent implements OnInit {
   pin = new Pin();
   
   images = [];
-  title = '';
+  boards = [];
 
-  constructor(private _pinService: PinService) { }
+  constructor(private _pinService: PinService, private _boardService: BoardService) { }
 
   submitUrl(){
     this._pinService.getSourceData(this.pin.source_link).then(response => this.updateImagesTitle(response)).catch(err => console.log(err));
@@ -24,7 +25,7 @@ export class PinFormComponent implements OnInit {
 
   updateImagesTitle(response){
     this.images = response.images; 
-    this.title = response.title;
+    this.pin.title = response.title;
     this.section += 1;
   }
 
@@ -33,7 +34,12 @@ export class PinFormComponent implements OnInit {
     this.section += 1;
   }
 
+  submitDescAndBoard(){
+    this._pinService.createPin(this.pin).then(response => console.log('created pin!')).catch(err => console.log(err));
+  }
+
   ngOnInit() {
+    this._boardService.getCurrUserBoards().then(response => this.boards = response).catch(err => console.log(err));
   }
 
 }

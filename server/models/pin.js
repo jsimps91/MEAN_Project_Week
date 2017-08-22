@@ -15,6 +15,9 @@ var PinSchema = new mongoose.Schema({
         required: true,
         minlength: 5
     },
+    description: {
+        type: String,
+    },
     _user: {
      type: Schema.Types.ObjectId, ref: 'User'   
     },

@@ -3,5 +3,7 @@ export class Pin {
         public source_link: string = '', 
         public title: string = '',
         public image: string = '',
+        public description: string = '', 
+        public board: string = '', 
     ){}
 }

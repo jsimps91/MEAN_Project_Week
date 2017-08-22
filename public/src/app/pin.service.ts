@@ -13,4 +13,8 @@ export class PinService {
     return this._http.post('/api/getSourceData', {url: url}).map(data => data.json()).toPromise();
   }
 
+  createPin(pin){
+    return this._http.post('/api/create_pin', pin).map(data => data.json()).toPromise();
+  }
+
 }
