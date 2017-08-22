@@ -1,3 +1,12 @@
 <p>
   profile works!
 </p>
+
+{{ user | json }}
+
+<h1>{{ user.fullName }}</h1>
+<h3>{{ user.boards.length }} boards</h3>
+<ul style="list-style-type: none" *ngFor="let board of user.boards">
+  <li>{{ board.title }}</li>
+  <li>{{ board.pins.length}} pins</li>
+</ul>  

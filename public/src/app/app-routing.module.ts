@@ -7,12 +7,17 @@ import { HomeComponent } from "./home/home.component";
 import { PinDetailComponent } from './pin-detail/pin-detail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PinFormComponent } from "./pin-form/pin-form.component";
+import { BoardFormComponent } from "./board-form/board-form.component";
+
 
 
 const routes: Routes = [
     {path: '', pathMatch: 'full', component: LoginRegComponent, children: []},
     {path: 'home', pathMatch: 'full', component: HomeComponent, children: []},
-    {path: 'pin/new', component: PinFormComponent}
+    {path: 'pin/new', component: PinFormComponent},
+    {path: 'board/new', component: BoardFormComponent},
+    {path: 'profile/:id', component: ProfileComponent},
+    
 ]
   
   @NgModule({

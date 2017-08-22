@@ -1,7 +1,7 @@
 <p>
   board-form works!
 </p>
-<form #boardForm="ngForm" submit="createBoard">
+<form #boardForm="ngForm" (submit)="createBoard()">
   <label>Title</label>
   <input type="text"
   name="title"

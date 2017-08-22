@@ -10,9 +10,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class BoardFormComponent implements OnInit {
 
-  constructor() { }
+  board = new Board()
+
+  constructor(private _router: Router, private _boardService: BoardService) { }
 
   ngOnInit() {
   }
-
+  createBoard(){
+    console.log("ABOUT TO CREATE BOARD")
+    this._boardService.createBoard(this.board)
+    .then((response) =>{
+      console.log("BOARD SUCCESSFULLY CREATED", response)
+      this._router.navigateByUrl('/home')
+    })
+  }
 }

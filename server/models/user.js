@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+var Schema = mongoose.Schema;
 
 
 var UserSchema = new mongoose.Schema({
@@ -8,6 +9,7 @@ var UserSchema = new mongoose.Schema({
     age: String,
     gender: String,
     password: String,
+    boards: [{type: Schema.Types.ObjectId, ref: 'Board'}]
 })
 
 mongoose.model('User', UserSchema);
