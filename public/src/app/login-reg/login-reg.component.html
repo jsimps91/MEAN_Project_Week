@@ -1,0 +1,107 @@
+<div id="container">
+  
+    <fieldset>
+      <legend>Login</legend>
+      <form (submit)="loginAttempt()" #formData='ngForm'>
+        <label for="email">Email: </label>
+        <input 
+          type="text"
+          name="email"
+          id="email"
+          [(ngModel)]="attemptedUser.email"
+        >
+        <label for="password">Password: </label>
+        <input 
+          type="password"
+          name="password"
+          id="password"
+          [(ngModel)]="attemptedUser.password"
+        >
+        <!-- <p *ngIf="currentUserArr.length < 1">Invalid login info</p> -->
+        <input type="submit" name="submit" value="Login">
+      </form>    
+    </fieldset>
+
+
+
+
+    <fieldset>
+      <legend>Registration</legend>
+      <form (submit)="registrationAttempt()" #formData='ngForm'>
+        <label for="fullName">Full Name:</label>
+        <input 
+          type="text" 
+          id="fullName" 
+          name="fullName"
+          required 
+          minlength="4" 
+          maxlength="24" 
+          [(ngModel)]="user.fullName" 
+          #fullName="ngModel">
+        <span *ngIf="!fullName.valid">Name is required</span>
+        <br>
+        <label for="email">Email:</label>
+        <input 
+          type="text" 
+          id="email"
+          name="email"
+          required
+          pattern='^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$'  
+          [(ngModel)]="user.email" 
+          #email="ngModel">
+        <span *ngIf="!email.valid">A valid email is required</span>
+        <br>
+        <label for="age">Age:</label>
+        <input 
+          type="text" 
+          id="age" 
+          name="age"
+          [(ngModel)]="user.age">
+        <br>
+        Gender: 
+        <label for="male">Male</label>
+        <input type="radio" 
+          id="male" 
+          name="gender"
+          value="male"
+          [(ngModel)]="user.gender">
+        <label for="female">Female</label>
+        <input type="radio" 
+          id="female" 
+          name="gender"
+          value="female"
+          [(ngModel)]="user.gender">
+        <label for="other">Other</label>
+        <input type="radio" 
+          id="other" 
+          name="gender"
+          value="other"
+          [(ngModel)]="user.gender">
+        <br>
+        <label for="password">Password</label> 
+        <input 
+          type="text" 
+          id="password" 
+          name="password"
+          required 
+          minlength="4" 
+          [(ngModel)]="user.password" 
+          #password="ngModel">
+        <span *ngIf="!password.valid">Password must be at least 4 characters</span>
+        <br>
+        <label for="confirmPassword">Confirm Password</label>
+        <input 
+          type="text" 
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+          [(ngModel)]="pwConfirm"
+          (keyup)="checkPassword()"
+        >
+        <span *ngIf="!passwordMatch">Password confirmation must match original</span>
+        <br>
+        <input [disabled]='!formData.valid || !passwordMatch' type="submit" value="Register">
+      </form>    
+      <span *ngIf="duplicateEmail.length >= 1">An account with that email already exists</span>
+    </fieldset>
+  </div>

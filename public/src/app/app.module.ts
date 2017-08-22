@@ -14,7 +14,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserService } from "./user.service";
 import { PinService } from "./pin.service";
 import { BoardService } from "./board.service";
+import { LoginRegComponent } from './login-reg/login-reg.component';
 import { PinFormComponent } from './pin-form/pin-form.component';
+import { BoardFormComponent } from "./board-form/board-form.component";
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { PinFormComponent } from './pin-form/pin-form.component';
     PinComponent,
     PinDetailComponent,
     ProfileComponent,
+    LoginRegComponent,
     PinFormComponent,
+    BoardFormComponent,
   ],
   imports: [
     BrowserModule,
