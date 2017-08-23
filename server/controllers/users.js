@@ -16,6 +16,8 @@ module.exports = {
                     password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
                     age: req.body.age
                 });
+                newUser.boards = [];
+                newUser.pins = [];
                 newUser.save(function(err) {
                     if (err) {
                         res.json(err);

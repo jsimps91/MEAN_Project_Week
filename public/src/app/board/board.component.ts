@@ -14,21 +14,22 @@ export class BoardComponent implements OnInit {
   constructor(private _router: Router, private _boardService: BoardService) { }
 
   ngOnInit() {
-    this.getCoverImage(this.board.pins[0])
+    if(this.board.pins.length==0){
+       this.coverImage = "http://www.solidbackgrounds.com/images/2560x1440/2560x1440-cool-black-solid-color-background.jpg"
+    }
+    else{
+      this.getCoverImage(this.board.pins[0])
+    }
+    
   }
 
   getCoverImage(id) {
-    console.log("GETTING COVER IMAGE FOR BOARD WITH ID:", id)
-    if (this.board.pins.length == 0) {
-      this.coverImage.image = "http://www.solidbackgrounds.com/images/2560x1440/2560x1440-cool-black-solid-color-background.jpg"
-    }
-    else {
+    console.log("about to get cover image! id:", id)
       this._boardService.getCoverImage(id)
         .then((response) => {
           console.log("COVER IMAGE", response)
-          this.coverImage = response
+          this.coverImage = response.image
         })
     }
   }
 
-}

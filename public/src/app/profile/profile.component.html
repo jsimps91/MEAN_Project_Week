@@ -1,12 +1,10 @@
-<p>
-  profile works!
-</p>
-
 {{ user | json }}
 
 <h1>{{ user.fullName }}</h1>
 <h3 *ngIf="user.boards.length==1">{{ user.boards.length }} board</h3>
 <h3 *ngIf="user.boards.length > 1">{{ user.boards.length }} boards</h3>
-<div>
-<app-board *ngFor="let board of user.boards" [board]="board"></app-board>
+
+<div  *ngFor="let board of user.boards">
+  <app-board [board]="board"></app-board>
 </div>
+
