@@ -71,15 +71,15 @@ module.exports = {
     },
 
 
-    // read: function (req, res){
-    //     Pin.find({}, function(err, pins){
-    //         if (err){
-    //             res.json(err);
-    //         } else {
-    //             res.json(pins);
-    //         }
-    //     });
-    // },
+    readOne: function (req, res){
+        Pin.findOne({_id: req.params.id}).populate('_user').populate('_board').exec(function(err, pin){
+            if (err){
+                res.json(err);
+            } else {
+                res.json(pin);
+            }
+        });
+    },
 
     // update: function(req, res){
     //     Pin.findOne({_id: req.params.id}, function(err, pin){

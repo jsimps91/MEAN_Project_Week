@@ -1,3 +1,11 @@
-<p>
-  pin-detail works!
-</p>
+<div>
+  <h1>{{pin.title}}</h1>
+  <img src={{pin.image}} alt="Placeholder for pin image">
+  <a href={{pin.source_link}}>Read It</a>
+  <p>{{pin.description}}</p>
+  <p>Published {{pin.createdAt | date}}</p>
+  <p>{{pin._user.fullName}} saved to {{pin._board.title}}</p>
+  <p>{{pin._board.description}}</p>
+</div>
+<p>Placeholder for comments form when ready</p>
+{{pin | json}}
