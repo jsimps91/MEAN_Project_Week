@@ -27,10 +27,9 @@ var PinSchema = new mongoose.Schema({
     repins: [{
         type: Schema.Types.ObjectId, ref: 'Repinners'
     }],
-    // *****Uncomment this field WHEN comments are ready
-    // comments: [{
-    //     type: Schema.Types.ObjectId, ref: 'Comment',
-    // }]
+    comments: [{
+        type: Schema.Types.ObjectId, ref: 'Comment',
+    }]
 }, {timestamps: true});
 
 mongoose.model('Pin', PinSchema)

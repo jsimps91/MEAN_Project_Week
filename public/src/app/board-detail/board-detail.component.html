@@ -8,4 +8,4 @@
 <h5 *ngIf="board.pins.length==1">{{ board.pins.length }} pin</h5>
 <h5 *ngIf="board.pins.length > 1">{{ board.pins.length }} pins</h5>
 
-<app-pin *ngFor="let pin of board.pins" [pin]="pin"></app-pin>
+<div *ngFor="let pin of board.pins"><app-pin [pin]="pin"></app-pin></div>

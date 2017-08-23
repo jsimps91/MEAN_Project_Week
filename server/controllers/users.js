@@ -60,8 +60,14 @@ module.exports = {
     },
 
     getCurrentUser: function(req, res){
-        console.log("USER IN SESSION IS", req.session.currUser)
-        res.json(req.session.currUser);
+        console.log('AT BACK END GETTING CURRENT USER');
+        if (req.session.currUser) {
+            let user = req.session.currUser
+            console.log("USER IN SESSION IS", req.session.currUser)
+            res.json(user);        
+        } else {
+            res.json({});
+        }
     },
 
     showProfile: function(req, res){

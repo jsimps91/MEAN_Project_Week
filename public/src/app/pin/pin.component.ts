@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pin } from '../pin';
+
 @Component({
   selector: 'app-pin',
   templateUrl: './pin.component.html',
@@ -8,7 +9,6 @@ import { Pin } from '../pin';
 export class PinComponent implements OnInit {
 
   @Input() pin;
-
 
   constructor() { }
 

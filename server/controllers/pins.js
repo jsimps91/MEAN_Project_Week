@@ -55,11 +55,18 @@ module.exports = {
         if (!url.startsWith('http')){
             url = 'http://' + url;
         }
+        var sub_urls = url.split('/')
+        console.log(sub_urls);
         var images = [];
         var title;
         request(url, function(error, response, body){
             var $ = cheerio.load(body);
             images = collectImages($);
+            for (var i=0; i<images.length; i++){
+                if (images[i].startsWith('/')){
+                    images[i] = sub_urls[0]+'//' + sub_urls[2] + images[i];
+                }
+            }
             title = getTitle($);
             if (title[1]){
                 title = title[1];
@@ -72,7 +79,7 @@ module.exports = {
 
 
     readOne: function (req, res){
-        Pin.findOne({_id: req.params.id}).populate('_user').populate('_board').exec(function(err, pin){
+        Pin.findOne({_id: req.params.id}).populate('_user').populate('_board').populate('comments').exec(function(err, pin){
             if (err){
                 res.json(err);
             } else {
