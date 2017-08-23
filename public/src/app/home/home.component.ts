@@ -15,7 +15,16 @@ export class HomeComponent implements OnInit {
   constructor(private _router: Router, private _userService: UserService) { }
   
   ngOnInit() {
-    this._userService.getCurrentUser().then(response => this.currentUser = response).catch(err => console.log(err));   
+    this._userService.getCurrentUser()
+      .then(response => {
+        if (response === {}) {
+          console.log('NO CURRENT USER');
+        } else {
+          this.currentUser = response          
+        }
+
+      })
+      .catch(err => console.log(err));   
   }
 
 }

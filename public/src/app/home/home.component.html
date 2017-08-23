@@ -3,6 +3,6 @@
 </p>
 <a [routerLink]="['../board/new']">New Board</a>
 <a [routerLink]="['../pin/new']">New Pin</a>
-<a [routerLink]="['../profile', currentUser._id]">Profile</a>
+<a *ngIf="currentUser" [routerLink]="['../profile', currentUser._id]">Profile</a>
 
-{{currentUser | json}}
+<p>{{currentUser | json}}</p>
