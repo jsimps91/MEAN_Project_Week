@@ -5,7 +5,7 @@
         type="text"
         name="source_link"
         required
-        pattern='[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
+        pattern='^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
         [(ngModel)]='pin.source_link'
         #source_link = 'ngModel'>
       <input type="submit" value='Next' [disabled]='!form1Data.valid'>
