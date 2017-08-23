@@ -40,4 +40,19 @@ module.exports = {
             }
         });
     },
+
+    showBoard: function(req, res){
+        console.log("SHOW BOARD MADE IT OT CONTROLLER")
+        Board.findOne({_id: req.params.id})
+        .populate('pins').populate('_user')
+        .exec(function(err, board){
+            if(err){
+                console.log("ERROR IN BOARDS CONTROLLER:", err)
+            }
+            else{
+                console.log("SUCCESS! BOARD:", board)
+                res.json(board)
+            }
+        })
+    }
 };

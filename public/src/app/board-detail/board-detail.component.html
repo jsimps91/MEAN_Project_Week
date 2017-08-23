@@ -1,0 +1,11 @@
+
+
+{{ board | json }}
+
+<h2>{{ board.title }}</h2>
+<h3>{{ board.description }}</h3>
+<h3>Category: {{ board.category }}
+<h5 *ngIf="board.pins.length==1">{{ board.pins.length }} pin</h5>
+<h5 *ngIf="board.pins.length > 1">{{ board.pins.length }} pins</h5>
+
+<app-pin *ngFor="let pin of board.pins" [pin]="pin"></app-pin>
