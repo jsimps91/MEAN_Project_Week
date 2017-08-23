@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Board = mongoose.model('Board');
 var User = mongoose.model('User');
+var Pin = mongoose.model('Pin');
 
 module.exports = {
 
@@ -52,6 +53,19 @@ module.exports = {
             else{
                 console.log("SUCCESS! BOARD:", board)
                 res.json(board)
+            }
+        })
+    },
+
+    getCoverImage: function(req, res){
+        console.log("GET COVER IMAGE MADE IT TO CONTROLLER")
+        Pin.findOne({_id: req.params.id}, function(err, pin){
+            if(err){
+                console.log("COULD NOT FIND PIN")
+            }
+            else{
+                console.log("SUCCESS! PIN:", pin)
+                res.json(pin)
             }
         })
     }

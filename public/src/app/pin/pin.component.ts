@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Pin } from '../pin';
 
 @Component({
   selector: 'app-pin',
