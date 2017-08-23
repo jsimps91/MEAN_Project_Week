@@ -19,9 +19,8 @@ function getTitle($) {
 
 module.exports = {
     // Example of CRUD operations
-    create: function (req, res) {
-        console.log(req.body);
-        Board.findOne({ _id: req.body.board }, function (err, board) {
+    create: function (req, res){
+        Board.findOne({_id: req.body.board}, function(err, board){
             var pin = new Pin({
                 source_link: req.body.source_link,
                 title: req.body.title,

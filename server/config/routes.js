@@ -3,6 +3,7 @@ var path = require('path');
 var users = require('../controllers/users.js');
 var pins = require('../controllers/pins.js');
 var boards = require('../controllers/boards.js');
+var comments = require('../controllers/comments.js');
 
 
 module.exports = function(app){
@@ -58,7 +59,11 @@ module.exports = function(app){
 
     app.get('/api/show_cover_image/:id', function(req, res){
         boards.getCoverImage(req, res);
-    })
+    });
+
+    app.post('/api/addComment/:id', function (req, res){
+        comments.create(req, res);
+    });
 
     // incorporate Angular for all other routes
     app.all('*', (req, res) => {

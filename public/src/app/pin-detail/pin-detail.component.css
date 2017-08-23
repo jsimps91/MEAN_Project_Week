@@ -1,4 +1,4 @@
-div{
+#pinfo{
     width: 80%;
     margin: auto;
 }
@@ -10,4 +10,8 @@ img{
 
 a{
     text-decoration: none;
+}
+
+.bold{
+    font-weight: bold;
 }

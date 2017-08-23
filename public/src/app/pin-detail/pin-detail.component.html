@@ -1,14 +1,21 @@
-{{ pin | json }}
-<div>
+<app-nav></app-nav>
+<div id='pinfo'>
   <h1>{{pin.title}}</h1>
   <img src={{pin.image}} alt="Placeholder for pin image">
   <a href={{pin.source_link}}>Read It</a>
   <p>{{pin.description}}</p>
   <p>Published {{pin.createdAt | date}}</p>
-  <p>{{pin._user.fullName}} saved to {{pin._board.title}}</p>
+  <p><span class='bold'>{{pin._user.fullName}}</span> saved to <span class='bold'>{{pin._board.title}}</span></p>
   <p>{{pin._board.description}}</p>
-</div>
-<h3>Comments</h3>
-<div>
-  
+  <h3>Comments</h3>
+  <div>
+    <div id='comment' *ngFor='let comment of comments'>
+      <p><span class='bold'>{{ comment.commenter }}</span> - {{ comment.content }}</p>
+    </div>
+    <div id='comment form'>
+        <form (submit)='sendComment()'>
+          <input type="text" name='message' [(ngModel)]='message'>
+        </form>
+    </div>
+  </div>
 </div>
