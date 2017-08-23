@@ -7,7 +7,6 @@ module.exports = {
     reg: function(req, res) {
         User.find({email: req.body.email}, function(error, user) {
             if (user.length >= 1) {
-                console.log('USER ALREADY EXISTS');
                 res.json(user);
             } else {
                 var newUser = new User({
@@ -19,11 +18,9 @@ module.exports = {
                 });
                 newUser.save(function(err) {
                     if (err) {
-                        console.log('FAILURE');
                         res.json(err);
                     } else {
                         req.session.currUser = newUser;
-                        console.log('THIS IS THE CURRENT USER registration: ', req.session.currUser)
                         res.json(newUser);
                     }
                 })
@@ -35,11 +32,8 @@ module.exports = {
     login: function(req, res) {
         User.find({email: req.body.email}, function(error, user) {
             if (error) {
-                console.log('ERROR');
                 res.json(error);
             } else {
-                console.log('MADE IT TO BACK END');
-                console.log(user);
                 if (user.length > 0) {
                     if (bcrypt.compareSync(req.body.password, user[0].password)) {
                         req.session.currUser = user[0]; 
@@ -55,22 +49,23 @@ module.exports = {
         })
     },
 
-
-
     logout: function(req, res) {
         req.session.destroy(function(err) {
             if (err) {
-                console.log('ERROR IN DESTROYING SESSION');
+                console.log(err);
             } else {
-                console.log('SUCCESFULLY LOGGED OUT');
                 res.json({});
             }
         })
     },
 
     getCurrentUser: function(req, res){
-        console.log("USER IN SESSION IS", req.session.currUser)
-        res.json(req.session.currUser)
+        if (req.session.currUser) {
+            res.json(req.session.currUser);
+        } else {
+            res.json({});
+        }
+
     },
 
     showProfile: function(req, res){
@@ -87,7 +82,5 @@ module.exports = {
             }
         })
     }
-
-
 
 };

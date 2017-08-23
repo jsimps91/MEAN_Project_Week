@@ -12,8 +12,19 @@ import { Router } from '@angular/router'
 export class AppComponent {
   
   constructor(private _userService: UserService, private _router: Router) { }
+
+  showLogout;
   
   ngOnInit() {
+    this._userService.getCurrentUser()
+      .then(user => {
+        if (user.fullName) {
+          this.showLogout = true;
+        } else {
+          this.showLogout = false;
+        }
+      })
+      .catch()
   }
 
 

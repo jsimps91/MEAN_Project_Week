@@ -17,31 +17,46 @@ export class LoginRegComponent implements OnInit {
   }
 
   user = new User;
+
   pwConfirm = '';
   passwordMatch = false;
-  
-  duplicateEmail = [];
+
+  regErrors = [];
 
   checkPassword() {
-    if (this.user.password === this.pwConfirm) {
-      this.passwordMatch = true;
+    if (this.user.password.length < 8) {
+      this.regErrors.push("Password must be at least 8 characters");
+    } 
+    if (this.user.password !== this.pwConfirm) {
+      this.regErrors.push("Password confirmation must match password")
+    }
+  }
+
+  validateEmail(email) {
+    var re = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$/;
+    if (!re.test(email)) {
+      this.regErrors.push("Email must be in valid email format");
     }
   }
 
   currUser;
 
   registrationAttempt() {
-    this._userService.regAttempt(this.user)
-      .then(data => {
-        this.currUser = data;
-        console.log('AT RESPONSE FROM REG');
-        console.log(data.fullName);
-        console.log(this.currUser);
-        this._router.navigateByUrl('/home');        
-      })
-      .catch(err => console.log(err));
+    this.regErrors = [];
+    this.checkPassword();
+    this.validateEmail(this.user.email);
+    if (this.regErrors.length > 0) {
+      this.user = new User;
+      this.pwConfirm = '';
+    } else {
+      this._userService.regAttempt(this.user)
+        .then(data => {
+          this.currUser = data;
+          this._router.navigateByUrl('/home');        
+        })
+        .catch(err => console.log(err));      
+    }
   }
-
 
   attemptedUser = {
     email: '',
@@ -51,7 +66,6 @@ export class LoginRegComponent implements OnInit {
   loginError;
 
   loginAttempt() {
-    console.log("ATTEMPTING LOGIN");
     this._userService.loginAttempt(this.attemptedUser)
       .then(resData => {
         if (resData.error) {
@@ -60,11 +74,6 @@ export class LoginRegComponent implements OnInit {
           this.currUser = resData;
           this._router.navigateByUrl('/home');
         }
-        // if (userArr.length >= 1) {
-        //   this._router.navigateByUrl('/home');
-        // } else {
-        //   this.currentUserArr = userArr;          
-        // }
       }).catch(err => console.log(err));
 
   }
