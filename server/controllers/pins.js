@@ -79,7 +79,7 @@ module.exports = {
 
 
     readOne: function (req, res){
-        Pin.findOne({_id: req.params.id}).populate('_user').populate('_board').exec(function(err, pin){
+        Pin.findOne({_id: req.params.id}).populate('_user').populate('_board').populate('comments').exec(function(err, pin){
             if (err){
                 res.json(err);
             } else {
