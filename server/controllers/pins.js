@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Pin = mongoose.model('Pin');
+var User = mongoose.model('User');
+var Board = mongoose.model('Board');
 var request = require('request');
 var cheerio = require('cheerio');
 
@@ -18,18 +20,33 @@ function collectImages($) {
 module.exports = {
     // Example of CRUD operations
     create: function (req, res){
-        // ****** This code will need to be modified to address associations when boards and users are ready!
-        var pin = new Pin({
-            source_link: req.body.source_link, 
-            title: req.body.title, 
-            image: req.body.image, 
-        });
-        pin.save(function(err){
-            if(err){
-                res.json(err);
-            } else {
-                res.json(pin);
-            }
+        console.log(req.body);
+        Board.findOne({_id: req.body.board}, function(err, board){
+            var pin = new Pin({
+                source_link: req.body.source_link, 
+                title: req.body.title, 
+                image: req.body.image, 
+            });
+            pin._board = board._id;
+            pin._user = req.session.currUser._id;
+            pin.repins = [];
+            board.pins.push(pin);
+            board.save(function(err){
+                if(err){
+                    console.log("COULD NOT SAVE PIN TO BOARD", err);
+                }
+                else{
+                    pin.save(function(err, pin){
+                        if(err){
+                            console.log("COULD NOT SAVE NEW PIN", err);
+                        }
+                        else{
+                            console.log("PIN SAVED", pin);
+                            res.json(pin);
+                        }
+                    });
+                }
+            });
         });
     }, 
 

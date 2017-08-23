@@ -14,4 +14,7 @@ export class BoardService {
     .map(data => data.json()).toPromise();
   }
 
+  getCurrUserBoards(){
+    return this._http.get('/api/get_cu_boards').map(data => data.json()).toPromise();
+  }
 }
