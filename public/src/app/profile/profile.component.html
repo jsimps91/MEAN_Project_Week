@@ -7,8 +7,6 @@
 <h1>{{ user.fullName }}</h1>
 <h3 *ngIf="user.boards.length==1">{{ user.boards.length }} board</h3>
 <h3 *ngIf="user.boards.length > 1">{{ user.boards.length }} boards</h3>
-<ul style="list-style-type: none" *ngFor="let board of user.boards">
-  <li><h4><a [routerLink]="['../../board', board._id]">{{ board.title }}</a></h4></li>
-  <li *ngIf="board.pins.length==1">{{ board.pins.length}} pin</li>
-  <li *ngIf="board.pins.length > 1">{{ board.pins.length}} pins</li>
-</ul>  
+<div>
+<app-board *ngFor="let board of user.boards" [board]="board"></app-board>
+</div>

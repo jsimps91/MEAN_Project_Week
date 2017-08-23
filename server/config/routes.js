@@ -56,6 +56,10 @@ module.exports = function(app){
         pins.readOne(req, res);
     });
 
+    app.get('/api/show_cover_image/:id', function(req, res){
+        boards.getCoverImage(req, res);
+    })
+
     // incorporate Angular for all other routes
     app.all('*', (req, res) => {
         res.sendFile(path.resolve('./public/dist/index.html'));

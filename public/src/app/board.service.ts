@@ -23,4 +23,10 @@ export class BoardService {
     .map(data => data.json())
     .toPromise();    
   }
+  
+  getCoverImage(id){
+    return this._http.get(`api/show_cover_image/${id}`)
+    .map(data => data.json())
+    .toPromise();  
+  }
 }
