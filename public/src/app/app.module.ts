@@ -17,6 +17,8 @@ import { BoardService } from "./board.service";
 import { LoginRegComponent } from './login-reg/login-reg.component';
 import { PinFormComponent } from './pin-form/pin-form.component';
 import { BoardFormComponent } from "./board-form/board-form.component";
+import { BoardComponent } from './board/board.component';
+import { BoardDetailComponent } from './board-detail/board-detail.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { BoardFormComponent } from "./board-form/board-form.component";
     LoginRegComponent,
     PinFormComponent,
     BoardFormComponent,
+    BoardComponent,
+    BoardDetailComponent,
   ],
   imports: [
     BrowserModule,

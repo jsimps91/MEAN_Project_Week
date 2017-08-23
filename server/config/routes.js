@@ -34,6 +34,11 @@ module.exports = function(app){
         users.showProfile(req, res);
     });
 
+    app.get('/api/show_board/:id', function(req, res){
+        console.log("SHOW BOARD GOING INTO CONTROLLER", req.body);
+        boards.showBoard(req, res);
+    });
+
     app.get('/api/get_cu_boards', function(req, res){
         boards.getCuBoards(req, res);
     });
