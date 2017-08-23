@@ -19,6 +19,7 @@ import { PinFormComponent } from './pin-form/pin-form.component';
 import { BoardFormComponent } from "./board-form/board-form.component";
 import { BoardComponent } from './board/board.component';
 import { BoardDetailComponent } from './board-detail/board-detail.component';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { BoardDetailComponent } from './board-detail/board-detail.component';
     BoardFormComponent,
     BoardComponent,
     BoardDetailComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
