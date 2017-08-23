@@ -17,16 +17,15 @@
           id="password"
           [(ngModel)]="attemptedUser.password"
         >
-        <p *ngIf="loginError">{{ loginError }}</p>
+        <p *ngIf="loginError" class="red">{{ loginError }}</p>
         <input type="submit" name="submit" value="Login">
       </form>    
     </fieldset>
 
-
-
-
     <fieldset>
       <legend>Registration</legend>
+      <p><strong>All fields are required for a new user</strong></p>
+      <p *ngFor="let err of regErrors" class="red">{{ err }}</p>
       <form (submit)="registrationAttempt()" #formData='ngForm'>
         <label for="fullName">Full Name:</label>
         <input 
@@ -34,11 +33,7 @@
           id="fullName" 
           name="fullName"
           required 
-          minlength="4" 
-          maxlength="24" 
-          [(ngModel)]="user.fullName" 
-          #fullName="ngModel">
-        <span *ngIf="!fullName.valid">Name is required</span>
+          [(ngModel)]="user.fullName">
         <br>
         <label for="email">Email:</label>
         <input 
@@ -46,16 +41,14 @@
           id="email"
           name="email"
           required
-          pattern='^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$'  
-          [(ngModel)]="user.email" 
-          #email="ngModel">
-        <span *ngIf="!email.valid">A valid email is required</span>
+          [(ngModel)]="user.email">
         <br>
         <label for="age">Age:</label>
         <input 
           type="text" 
           id="age" 
           name="age"
+          required
           [(ngModel)]="user.age">
         <br>
         Gender: 
@@ -64,6 +57,7 @@
           id="male" 
           name="gender"
           value="male"
+          required
           [(ngModel)]="user.gender">
         <label for="female">Female</label>
         <input type="radio" 
@@ -84,10 +78,7 @@
           id="password" 
           name="password"
           required 
-          minlength="4" 
-          [(ngModel)]="user.password" 
-          #password="ngModel">
-        <span *ngIf="!password.valid">Password must be at least 4 characters</span>
+          [(ngModel)]="user.password">
         <br>
         <label for="confirmPassword">Confirm Password</label>
         <input 
@@ -96,12 +87,10 @@
           name="confirmPassword"
           required
           [(ngModel)]="pwConfirm"
-          (keyup)="checkPassword()"
         >
-        <span *ngIf="!passwordMatch">Password confirmation must match original</span>
         <br>
-        <input [disabled]='!formData.valid || !passwordMatch' type="submit" value="Register">
+        <input [disabled]='!formData.valid' type="submit" value="Register">
       </form>    
-      <span *ngIf="duplicateEmail.length >= 1">An account with that email already exists</span>
     </fieldset>
+
   </div>
