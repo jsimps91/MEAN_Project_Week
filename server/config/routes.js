@@ -47,6 +47,10 @@ module.exports = function(app){
         pins.getSourceData(req, res);
     });
 
+    app.get('/api/getPin/:id', function (req, res){
+        pins.readOne(req, res);
+    });
+
     // incorporate Angular for all other routes
     app.all('*', (req, res) => {
         res.sendFile(path.resolve('./public/dist/index.html'));

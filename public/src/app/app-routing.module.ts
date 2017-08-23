@@ -15,6 +15,7 @@ const routes: Routes = [
     {path: '', pathMatch: 'full', component: LoginRegComponent, children: []},
     {path: 'home', pathMatch: 'full', component: HomeComponent, children: []},
     {path: 'pin/new', component: PinFormComponent},
+    {path: 'pin/:id', component: PinDetailComponent},
     {path: 'board/new', component: BoardFormComponent},
     {path: 'profile/:id', component: ProfileComponent},
     
