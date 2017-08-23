@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from "../user";
 
 @Component({
   selector: 'app-home',
@@ -9,24 +10,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  currentUser;
+  currentUser: User;
 
   constructor(private _router: Router, private _userService: UserService) { }
   
   ngOnInit() {
-
-    this.getCurrentUser()
-    
-  }
-
-    getCurrentUser(){
-    console.log("ABOUT TO GET CURRENT USER")
-    this._userService.getCurrentUser()
-      .then((response) => {
-        console.log("CURRENT USER", response)
-        this.currentUser = response
-
-      })    
+    this._userService.getCurrentUser().then(response => this.currentUser = response).catch(err => console.log(err));   
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pin } from "../pin";
-
 import { PinService } from "../pin.service";
 import { BoardService } from "../board.service";
 
@@ -17,7 +17,7 @@ export class PinFormComponent implements OnInit {
   images = [];
   boards = [];
 
-  constructor(private _pinService: PinService, private _boardService: BoardService) { }
+  constructor(private _pinService: PinService, private _boardService: BoardService, private _router: Router) { }
 
   submitUrl(){
     this._pinService.getSourceData(this.pin.source_link).then(response => this.updateImagesTitle(response)).catch(err => console.log(err));
@@ -35,7 +35,9 @@ export class PinFormComponent implements OnInit {
   }
 
   submitDescAndBoard(){
-    this._pinService.createPin(this.pin).then(response => console.log('created pin!')).catch(err => console.log(err));
+    this._pinService.createPin(this.pin).then(response => {
+      this._router.navigateByUrl(`/pin/${response._id}`)
+    }).catch(err => console.log(err));
   }
 
   ngOnInit() {

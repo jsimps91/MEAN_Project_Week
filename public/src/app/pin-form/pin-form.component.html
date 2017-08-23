@@ -1,3 +1,5 @@
+{{images}}
+
 <div id='url' [ngClass]="{'hidden':section!=1}">
     <form #form1Data='ngForm' (submit)='submitUrl()'>
       <h3>Save from a website:</h3> 
@@ -38,5 +40,3 @@
         <input type="submit" value='Save' [disabled]='!form2Data.valid'>
       </form>
 </div>
-
-<h3>{{pin | json}}</h3>
