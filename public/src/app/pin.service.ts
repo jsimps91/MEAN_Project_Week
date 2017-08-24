@@ -21,4 +21,8 @@ export class PinService {
     return this._http.get(`/api/getPin/${id}`).map(data => data.json()).toPromise();
   }
 
+  getAllPins() {
+    return this._http.get('/api/getAllPins').map(data => data.json()).toPromise();
+  }
+
 }

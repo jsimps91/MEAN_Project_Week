@@ -60,6 +60,10 @@ module.exports = function(app){
         boards.getCoverImage(req, res);
     })
 
+    app.get('/api/getAllPins', function(req, res) {
+        pins.getAllPins(req, res);
+    })
+
     // incorporate Angular for all other routes
     app.all('*', (req, res) => {
         res.sendFile(path.resolve('./public/dist/index.html'));
