@@ -17,12 +17,14 @@
 </div>
 
 <div id='photos' [ngClass]="{'hidden':section!=2}">
+  <button (click)='goBack()'>Go back to enter a different url</button>
   <div class = 'image_display' *ngFor='let image of images'>
     <a (click)='updateImg(image)'><img src={{image}} alt="" onerror="this.style.display='none'"></a>
   </div>
 </div>
 
 <div id='board' [ngClass]="{'hidden':section!=3}">
+    <button (click)='goBack()'>Go back to select a different image</button>
   <img id='small_image' src={{pin.image}} alt="">
     <form  id='board_select' #form2Data='ngForm' (submit)='submitDescAndBoard()'>
         <input
@@ -44,6 +46,7 @@
 </div>
 
 <div id='new_board' [ngClass]="{'hidden':section!=4}">
+  <button (click)='goBack()'>Go back to select an existing board</button>
   <form #boardForm="ngForm" (submit)="createBoard()">
       <label>Title</label>
       <input type="text"

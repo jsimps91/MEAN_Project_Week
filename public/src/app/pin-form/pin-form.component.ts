@@ -59,6 +59,10 @@ export class PinFormComponent implements OnInit {
     })
   }
 
+  goBack(){
+    this.section -=1;
+  }
+  
   ngOnInit() {
     this._boardService.getCurrUserBoards().then(response => this.boards = response).catch(err => console.log(err));
   }
