@@ -7,7 +7,8 @@
     [(ngModel)]='userSearchItem'
     placeholder = 'Find a Pinackle user'>
   <input type="submit" value='search'>
-
 </form>
-
-<app-pin *ngFor="let pin of searchResults" [pin]="pin"></app-pin>
+<h3>{{ resMsg }}</h3>
+<a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
+<hr>
+<app-pin *ngFor="let pin of allPins" [pin]="pin"></app-pin>
