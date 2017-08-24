@@ -73,6 +73,10 @@ module.exports = function(app){
         pins.updateRepins(req, res);
     });
 
+    app.post('/api/search_by_user', function(req, res) {
+        users.searchByUser(req, res);
+    })
+
     // incorporate Angular for all other routes
     app.all('*', (req, res) => {
         res.sendFile(path.resolve('./public/dist/index.html'));

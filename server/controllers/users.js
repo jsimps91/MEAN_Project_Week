@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var bcrypt = require('bcrypt');
+var Pin = mongoose.model('Pin');
 
 module.exports = {
 
@@ -62,10 +63,8 @@ module.exports = {
     },
 
     getCurrentUser: function(req, res){
-        console.log('AT BACK END GETTING CURRENT USER');
         if (req.session.currUser) {
             let user = req.session.currUser
-            console.log("USER IN SESSION IS", req.session.currUser)
             res.json(user);        
         } else {
             res.json({});
@@ -73,18 +72,46 @@ module.exports = {
     },
 
     showProfile: function(req, res){
-        console.log("SHOW PROFILE MADE IT TO CONTROLLER")
         User.findOne({_id: req.params.id})
         .populate('boards').populate('pins')
         .exec(function(err, user){
             if(err){
-                console.log("ERROR:", err);
+                console.log(err);
             }
             else{
-                console.log("SUCCESS! USER:", user);
                 res.json(user);
             }
         });
+    },
+
+    searchByUser: function(req, res) {
+        User.find({fullName: req.body.name}, function(err, users) {
+            if (err) {
+                console.log(err);
+            } else if (users.length === 0) {
+                res.json({
+                    message: 'I\'m sorry, there are no users matching your search query.'
+                });
+            } else {
+                Pin.find({_user: users[0]}, function(err, pins) {
+                    if (err) {
+                        console.log(err);
+                    } else if (pins.length === 0) {
+                        res.json({
+                            'users': users,
+                            'message': 'We found a user matching your search:'
+                        });                          
+                    } else {
+                        let resObj = {
+                            'users': users,
+                            'pins': pins,
+                            'message': 'We found a user matching your search:'                            
+                        }
+                        res.json(resObj);                            
+                    }
+                });
+            }
+        })
     }
 
 };

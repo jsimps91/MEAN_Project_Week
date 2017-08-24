@@ -44,5 +44,13 @@ export class UserService {
     .toPromise(); 
   }
 
+  searchByUser(searchItem) {
+    let context = {
+      'name': searchItem
+    };
+    return this._http.post('/api/search_by_user', context)
+    .map(data => data.json())
+    .toPromise();
+  }
 
 }
