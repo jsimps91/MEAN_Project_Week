@@ -15,6 +15,7 @@
 </div>
 
 <div id='new_board' [ngClass]="{'hidden':section!=2}">
+  <button (click)='goBack()'>Go back to select an existing board</button>
   <form #boardForm="ngForm" (submit)="createBoard()">
       <label>Title</label>
       <input type="text"

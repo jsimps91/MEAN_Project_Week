@@ -44,6 +44,10 @@ export class PinRepinComponent implements OnInit {
     })
   }
 
+  goBack(){
+    this.section -=1;
+  }
+  
   constructor(private _route: ActivatedRoute, private _pinService: PinService, private _boardService: BoardService, private _router: Router) { 
     this._route.paramMap.switchMap(params => {
       this.pin_id = params.get('id');
