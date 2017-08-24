@@ -20,6 +20,7 @@ import { BoardFormComponent } from "./board-form/board-form.component";
 import { BoardComponent } from './board/board.component';
 import { BoardDetailComponent } from './board-detail/board-detail.component';
 import { NavComponent } from './nav/nav.component';
+import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
@@ -36,6 +37,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     BoardComponent,
     BoardDetailComponent,
     NavComponent,
+    SearchResultsComponent,
     EditProfileComponent,
   ],
   imports: [

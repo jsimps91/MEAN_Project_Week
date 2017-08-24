@@ -1,2 +1,13 @@
-
 <app-nav></app-nav>
+<br>
+<form (submit)='searchByUser()' #formData='ngForm' >
+  <input
+    type="text"
+    name="searchByUser"
+    [(ngModel)]='userSearchItem'
+    placeholder = 'Find a Pinackle user'>
+  <input type="submit" value='search'>
+
+</form>
+
+<app-pin *ngFor="let pin of searchResults" [pin]="pin"></app-pin>

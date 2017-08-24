@@ -98,6 +98,16 @@ module.exports = {
         });
     },
 
+    getAllPins: function(req, res) {
+        Pin.find({}, function(err, pins) {
+            if (err) {
+                res.json(err);
+            } else {
+                res.json(pins);
+            }
+        })
+    },
+
     // update: function(req, res){
     //     Pin.findOne({_id: req.params.id}, function(err, pin){
     //         if(err) {
