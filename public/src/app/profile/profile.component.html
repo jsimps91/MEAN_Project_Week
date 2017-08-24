@@ -1,10 +1,22 @@
-{{ user | json }}
 
-<h1>{{ user.fullName }}</h1>
-<h3 *ngIf="user.boards.length==1">{{ user.boards.length }} board</h3>
-<h3 *ngIf="user.boards.length > 1">{{ user.boards.length }} boards</h3>
 
-<div  *ngFor="let board of user.boards">
-  <app-board [board]="board"></app-board>
+
+
+<h2>{{ user.fullName }}</h2>
+<h3 *ngIf="user.boards.length==1"><a (click)="boards()">{{ user.boards.length }} board</a></h3>
+<h3 *ngIf="user.boards.length != 1"><a (click)="boards()">{{ user.boards.length }} boards</a></h3>
+
+<h3 *ngIf="user.pins.length ==1"><a (click)="pins()"> {{ user.pins.length }} Pin</a></h3>
+<h3 *ngIf="user.pins.length !=1"><a (click)="pins()"> {{ user.pins.length }} Pins</a></h3>
+<h3 *ngIf="user._id==currentUser._id"><a (click)="edit()">Edit My Profile</a></h3>
+<div *ngIf="view=='boards'">
+  <span *ngFor="let board of user.boards">
+    <app-board [board]="board"></app-board>
+  </span>
 </div>
-
+<div *ngIf="view=='pins'">
+  <span *ngFor="let pin of user.pins">
+    <app-pin [pin]="pin"></app-pin>
+  </span>
+</div>
+<app-edit-profile  *ngIf="view=='edit'" [currentUser]="currentUser"></app-edit-profile>

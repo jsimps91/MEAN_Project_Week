@@ -75,7 +75,7 @@ module.exports = {
     showProfile: function(req, res){
         console.log("SHOW PROFILE MADE IT TO CONTROLLER")
         User.findOne({_id: req.params.id})
-        .populate('boards')
+        .populate('boards').populate('pins')
         .exec(function(err, user){
             if(err){
                 console.log("ERROR:", err);

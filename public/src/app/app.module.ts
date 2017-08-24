@@ -20,6 +20,7 @@ import { BoardFormComponent } from "./board-form/board-form.component";
 import { BoardComponent } from './board/board.component';
 import { BoardDetailComponent } from './board-detail/board-detail.component';
 import { NavComponent } from './nav/nav.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { NavComponent } from './nav/nav.component';
     BoardComponent,
     BoardDetailComponent,
     NavComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
