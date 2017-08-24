@@ -29,4 +29,12 @@ export class BoardService {
     .map(data => data.json())
     .toPromise();  
   }
+
+  searchByTopic(topic) {
+    let context = {
+      'topic': topic
+    };
+    return this._http.post('/api/searchByTopic', context).map(data => data.json()).toPromise();
+  }
+  
 }

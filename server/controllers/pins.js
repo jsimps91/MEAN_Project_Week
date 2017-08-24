@@ -123,35 +123,7 @@ module.exports = {
             }
         });
     },
-    // searchByUser: function(req, res) {
-        
-        // User.find({fullName: req.body.name}, function(err, users) {
-        //     if (err) {
-        //         console.log(err);
-        //     } else if (users.length === 0) {
-        //         res.json({'responseMsg': 'I\'m sorry, there are no users matching your search query.'});
-        //     } else if (users.length === 1) {
-        //         sljfl;
-                
-        //     {
-        //         // Pin.find({_user: users[0]}, function(err, pins) {
-        //         //     if (pins.length === 0) {
-        //         //         res.json({
-        //         //             'responseMsg': 'That user has not posted any pins yet...',
-        //         //             'users': users
-        //         //         })
-        //         //     } else {
-        //         //         res.json({
-        //         //             'responseMsg': 'Here are the pins posted by the user you requested!',
-        //         //             'users': users,
-        //         //             'pins': pins
-        //         //         })                        
-        //         //     }
 
-        //         // })
-        //     }
-        // });
-    // },
 
     // update: function(req, res){
     //     Pin.findOne({_id: req.params.id}, function(err, pin){
