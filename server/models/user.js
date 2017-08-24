@@ -10,7 +10,9 @@ var UserSchema = new mongoose.Schema({
     gender: String,
     password: String,
     boards: [{type: Schema.Types.ObjectId, ref: 'Board'}],
-    pins: [{type: Schema.Types.ObjectId, ref: 'Pin'}]
+    pins: [{type: Schema.Types.ObjectId, ref: 'Pin'}],
+    followers: [{type: Schema.Types.ObjectId, ref:'User'}],
+    following: [{type: Schema.Types.ObjectId, ref:'User'}],
 });
 
 mongoose.model('User', UserSchema);

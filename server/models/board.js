@@ -20,6 +20,6 @@ var BoardSchema = new mongoose.Schema({
 },  
  {timestamps: true});
 
-mongoose.model('Board', BoardSchema)
+mongoose.model('Board', BoardSchema);
 
 

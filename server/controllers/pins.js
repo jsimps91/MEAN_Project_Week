@@ -31,7 +31,7 @@ module.exports = {
                 user.pins.push(pin);
                 user.save(function (err) {
                     if (err) {
-                        console.log("couldn't save pin to user")
+                        console.log("couldn't save pin to user");
                     }
                     else {
                         pin._board = board._id;
@@ -53,9 +53,9 @@ module.exports = {
                                     }
                                 });
                             }
-                        })
+                        });
                     }
-                })
+                });
             });
         });
     },
@@ -65,7 +65,7 @@ module.exports = {
         if (!url.startsWith('http')) {
             url = 'http://' + url;
         }
-        var sub_urls = url.split('/')
+        var sub_urls = url.split('/');
         var images = [];
         var title;
         request(url, function (error, response, body) {
@@ -104,7 +104,7 @@ module.exports = {
             } else {
                 res.json(pins);
             }
-        })
+        });
     },
 
     updateRepins: function(req, res){

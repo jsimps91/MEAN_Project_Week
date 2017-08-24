@@ -1,14 +1,16 @@
 
-
-
-
 <h2>{{ user.fullName }}</h2>
 <h3 *ngIf="user.boards.length==1"><a (click)="boards()">{{ user.boards.length }} board</a></h3>
 <h3 *ngIf="user.boards.length != 1"><a (click)="boards()">{{ user.boards.length }} boards</a></h3>
 
 <h3 *ngIf="user.pins.length ==1"><a (click)="pins()"> {{ user.pins.length }} Pin</a></h3>
 <h3 *ngIf="user.pins.length !=1"><a (click)="pins()"> {{ user.pins.length }} Pins</a></h3>
+<h3 *ngIf="user.followers.length ==1"><a (click)="followers()"> {{ user.followers.length }} Follower</a></h3>
+<h3 *ngIf="user.followers.length !=1"><a (click)="followers()"> {{ user.followers.length }} Followers</a></h3>
+<h3 *ngIf="user.following.length ==1"><a (click)="following()"> {{ user.following.length }} Following</a></h3>
+<h3 *ngIf="user.following.length !=1"><a (click)="following()"> {{ user.following.length }} Following</a></h3>
 <h3 *ngIf="user._id==currentUser._id"><a (click)="edit()">Edit My Profile</a></h3>
+<h3 *ngIf='user._id!=currentUser._id'><a (click)="follow(user._id)">Follow</a></h3>
 <div *ngIf="view=='boards'">
   <span *ngFor="let board of user.boards">
     <app-board [board]="board"></app-board>
@@ -20,3 +22,21 @@
   </span>
 </div>
 <app-edit-profile  *ngIf="view=='edit'" [currentUser]="currentUser"></app-edit-profile>
+<div *ngIf="view=='followers'">
+  <a *ngFor='let follower of user.followers'[routerLink]="['/profile', follower._id]"><div>
+    <p>{{follower.fullName}}</p>
+    <p *ngIf="follower.boards.length !=1">{{follower.boards.length}} boards</p>
+    <p *ngIf="follower.boards.length ==1">{{follower.boards.length}} board</p>
+    <p *ngIf='follower.followers.length !=1'>{{follower.followers.length}} followers</p>
+    <p *ngIf='follower.followers.length ==1'>{{follower.followers.length}} follower</p>
+  </div></a>
+</div>
+<div *ngIf="view=='following'">
+  <a *ngFor='let following of user.following' [routerLink]="['/profile', following._id]"><div>
+    <p>{{following.fullName}}</p>
+    <p *ngIf="following.boards.length !=1">{{following.boards.length}} boards</p>
+    <p *ngIf="following.boards.length ==1">{{following.boards.length}} board</p>
+    <p *ngIf='following.followers.length !=1'>{{following.followers.length}} followers</p>
+    <p *ngIf='following.followers.length ==1'>{{following.followers.length}} follower</p>
+  </div></a>
+</div>
