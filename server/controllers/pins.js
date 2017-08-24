@@ -25,18 +25,18 @@ module.exports = {
                 source_link: req.body.source_link,
                 title: req.body.title,
                 image: req.body.image,
+                repinned: req.body.repinned,
             });
             User.findOne({ _id: req.session.currUser._id }, function (err, user) {
-                user.pins.push(pin)
+                user.pins.push(pin);
                 user.save(function (err) {
                     if (err) {
                         console.log("couldn't save pin to user")
                     }
                     else {
-
                         pin._board = board._id;
                         pin._user = req.session.currUser._id;
-                        pin.repins = [];
+                        pin.repins = 0;
                         board.pins.push(pin);
                         board.save(function (err) {
                             if (err) {
@@ -105,6 +105,23 @@ module.exports = {
                 res.json(pins);
             }
         })
+    },
+
+    updateRepins: function(req, res){
+        Pin.findOne({_id: req.params.id}, function(err, pin){
+            if(err) {
+                res.json(err);
+            } else {
+                pin.repins += 1;
+                pin.save(function(err){
+                    if(err){
+                        res.json(err);
+                    } else {
+                        res.json(pin);
+                    }
+                });
+            }
+        });
     },
 
 

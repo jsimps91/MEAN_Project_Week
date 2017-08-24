@@ -1,0 +1,67 @@
+{{pin | json}}
+<div id='board' [ngClass]="{'hidden':section!=1}">
+  <img id='small_image' src={{pin.image}} alt="">
+    <form  id='board_select' #form2Data='ngForm' (submit)='submitBoard()'>
+        <select name="board"
+          required
+          [(ngModel)]="pin.board"
+          #board="ngModel"
+        >
+          <option *ngFor='let board of boards' value={{board._id}}>{{board.title}}-{{board.description}}</option>
+          <option value='*new*'>Create a new board</option>
+        </select>
+        <input type="submit" value='Save' [disabled]='!form2Data.valid'>
+      </form>
+</div>
+
+<div id='new_board' [ngClass]="{'hidden':section!=2}">
+  <button (click)='goBack()'>Go back to select an existing board</button>
+  <form #boardForm="ngForm" (submit)="createBoard()">
+      <label>Title</label>
+      <input type="text"
+      name="title"
+      required
+      [(ngModel)]="new_board.title"
+      #title="ngModel"
+      >
+      <span *ngIf="title.errors">
+        <p *ngIf="title.errors.required">
+          Please give your board a title!
+        </p>
+      </span>
+      <br>
+      <label>Description</label>
+      <input type="text"
+      name="description"
+      [(ngModel)]="new_board.description"
+      #description="ngModel"
+      >
+      <br>
+      <label>Category</label>
+      <select name="category"
+      required
+      [(ngModel)]="new_board.category"
+      #category="ngModel"
+      >
+        <option value="Pickle Art">Pickle Art</option>
+        <option value="Pickle Books">Pickle Books</option>
+        <option value="Pickle Clothing">Pickle Clothing</option>
+        <option value="Pickle Cockatails">Pickle Cocktails</option>
+        <option value="Pickle DIY">Pickle DIY</option>
+        <option value="Pickle Facts">Pickle Facts</option>
+        <option value="Pickle History">Pickle History</option>
+        <option value="Pickle Home Decor">Pickle Home Decor</option>
+        <option value="Pickle Humor">Pickle Humor</option>
+        <option value="Pickle Photography">Pickle Photography</option>
+        <option value="Pickle Pop Culture">Pickle Pop Culture</option>
+        <option value="Pickle Recipes">Pickle Recipes</option>
+      </select>
+      <span *ngIf="category.errors">
+        <p *ngIf="category.errors.required">
+          Please select a category
+        </p>
+      </span>
+      <br>
+      <input type="submit" value="Create Board" [disabled]="!boardForm.valid">
+    </form>
+</div>

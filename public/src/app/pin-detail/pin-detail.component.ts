@@ -15,7 +15,7 @@ export class PinDetailComponent implements OnInit {
   message = '';
   comments = [];
 
-  constructor(private _route: ActivatedRoute, private _pinService: PinService) { 
+  constructor(private _route: ActivatedRoute, private _pinService: PinService,private _router: Router) { 
     this._route.paramMap.switchMap(params => {
       this.pin_id = params.get('id');
       return this._pinService.retrievePin(params.get('id'))
@@ -30,6 +30,10 @@ export class PinDetailComponent implements OnInit {
       this.comments.push(response);
       this.message = '';
     }).catch(err => console.log(err));
+  }
+
+  repin(){
+    this._router.navigateByUrl(`/pin/repin/${this.pin_id}`)
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
 <a [routerLink]="['../pin', pin._id]"><div>
   <img src={{pin.image}} alt="">
-  <p>{{pin.title}}</p>
+  <p>{{pin.title}} <span *ngIf='pin.repins == 1'>{{pin.repins}} repin</span><span *ngIf='pin.repins > 1'>{{pin.repins}} repins</span><button (click)='repin()'>Save</button></p>
 </div></a>

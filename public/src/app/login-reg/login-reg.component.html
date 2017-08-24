@@ -18,7 +18,7 @@
           [(ngModel)]="attemptedUser.password"
         >
         <p *ngIf="loginError" class="red">{{ loginError }}</p>
-        <input type="submit" name="submit" value="Login">
+        <input [ngClass]="'button'" type="submit" name="submit" value="Login">
       </form>    
     </fieldset>
 
@@ -51,7 +51,7 @@
           required
           [(ngModel)]="user.age">
         <br>
-        Gender: 
+        <label>Gender:</label>
         <label for="male">Male</label>
         <input type="radio" 
           id="male" 
@@ -89,7 +89,7 @@
           [(ngModel)]="pwConfirm"
         >
         <br>
-        <input [disabled]='!formData.valid' type="submit" value="Register">
+        <input [ngClass]="'button'" [disabled]='!formData.valid' type="submit" value="Register">
       </form>    
     </fieldset>
 

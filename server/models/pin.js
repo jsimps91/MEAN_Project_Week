@@ -24,9 +24,12 @@ var PinSchema = new mongoose.Schema({
     _board: {
         type: Schema.Types.ObjectId, ref: 'Board'
     },
-    repins: [{
-        type: Schema.Types.ObjectId, ref: 'Repinners'
-    }],
+    repins: {
+        type: Number,
+    },
+    repinned: {
+        type: Boolean,
+    },
     comments: [{
         type: Schema.Types.ObjectId, ref: 'Comment',
     }]

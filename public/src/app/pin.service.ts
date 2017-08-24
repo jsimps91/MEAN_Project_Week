@@ -29,4 +29,7 @@ export class PinService {
     return this._http.post(`/api/addComment/${id}`, {comment: comment}).map(data => data.json()).toPromise();
   }
 
+  updateRepins(id){
+    return this._http.get(`/api/updateRepins/${id}`).map(data => data.json()).toPromise();
+  }
 }

@@ -15,7 +15,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     if(this.board.pins.length==0){
-       this.coverImage = "http://www.solidbackgrounds.com/images/2560x1440/2560x1440-cool-black-solid-color-background.jpg"
+       this.coverImage = "https://www.beautycolorcode.com/d4d855-2880x1800.png"
     }
     else{
       this.getCoverImage(this.board.pins[0])

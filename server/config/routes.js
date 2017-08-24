@@ -67,7 +67,11 @@ module.exports = function(app){
 
     app.get('/api/getAllPins', function(req, res) {
         pins.getAllPins(req, res);
-    })
+    });
+
+    app.get('/api/updateRepins/:id', function(req, res) {
+        pins.updateRepins(req, res);
+    });
 
     app.post('/api/search_by_user', function(req, res) {
         users.searchByUser(req, res);
