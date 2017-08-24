@@ -22,8 +22,14 @@ import { BoardDetailComponent } from './board-detail/board-detail.component';
 import { NavComponent } from './nav/nav.component';
 import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+<<<<<<< HEAD
+import { NgClass } from '@angular/common';
+import 'materialize-css';
+import { MaterializeModule } from "angular2-materialize";
+=======
 import { PinRepinComponent } from './pin-repin/pin-repin.component';
 
+>>>>>>> ea8556fa57eb0b88e83f742b9d9261b3c4553f77
 
 @NgModule({
   declarations: [
@@ -47,6 +53,7 @@ import { PinRepinComponent } from './pin-repin/pin-repin.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    MaterializeModule,
   ],
   providers: [
     UserService,

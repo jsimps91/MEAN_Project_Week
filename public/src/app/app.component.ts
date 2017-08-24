@@ -4,6 +4,7 @@ import { UserService } from './user.service';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router'
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
