@@ -22,7 +22,9 @@ import { BoardDetailComponent } from './board-detail/board-detail.component';
 import { NavComponent } from './nav/nav.component';
 import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-
+import { NgClass } from '@angular/common';
+import 'materialize-css';
+import { MaterializeModule } from "angular2-materialize";
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    MaterializeModule,
   ],
   providers: [
     UserService,
