@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pin } from '../pin';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pin',
@@ -10,7 +11,11 @@ export class PinComponent implements OnInit {
 
   @Input() pin;
 
-  constructor() { }
+  constructor(private _router: Router) { }
+
+  repin(){
+    this._router.navigateByUrl(`/pin/repin/${this.pin._id}`)
+  }
 
   ngOnInit() {
   }

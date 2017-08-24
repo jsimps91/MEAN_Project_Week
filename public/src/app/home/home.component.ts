@@ -16,13 +16,12 @@ export class HomeComponent implements OnInit {
 
   constructor(private _router: Router, private _userService: UserService, private _pinService: PinService) { }
 
-  userSearchItem;
-  searchResults;
+  allPins;
 
   getAllPins() {
     this._pinService.getAllPins()
     .then(data => {
-      this.searchResults = data;
+      this.allPins = data;
     })
     .catch(function(error) {
       console.log(error);
@@ -41,10 +40,37 @@ export class HomeComponent implements OnInit {
     })
     .catch(err => console.log(err));     
   }
+
+  userSearchItem;
+  resMsg;
+  userSearchResults;  
   
   ngOnInit() {
     this.getAllPins();
     this.getCurrUser();
+    this.userSearchItem = '';
+    this.userSearchResults = [];
+    this.resMsg = '';
+  }
+
+
+
+  searchByUser() {
+    this._userService.searchByUser(this.userSearchItem)
+    .then(data => {
+        this.resMsg = data.message;
+        if (data.users) {
+          this.userSearchResults = data.users;
+          if (data.pins) {
+            this.allPins = data.pins;
+          }
+        }
+    })
+    .catch(err => console.log(err));
+  }
+
+  goToUser(id) {
+    this._router.navigateByUrl(`/profile/${id}`);
   }
 
 }

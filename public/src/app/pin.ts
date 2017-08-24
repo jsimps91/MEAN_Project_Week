@@ -5,5 +5,6 @@ export class Pin {
         public image: string = '',
         public description: string = '', 
         public board: string = '', 
+        public repinned: boolean = false,
     ){}
 }
