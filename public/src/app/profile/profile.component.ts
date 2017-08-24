@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.subscription=this._route.paramMap.switchMap(params => {
-        console.log("TaskDetailsComponent loaded and url id given is: ", params.get('id'));
+        console.log("url id given is: ", params.get('id'));
         return this._userService.showProfile(params.get('id'));
       }).subscribe(user => this.user = user);
     this.view = "boards";

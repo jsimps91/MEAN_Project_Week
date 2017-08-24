@@ -66,7 +66,6 @@ module.exports = {
             url = 'http://' + url;
         }
         var sub_urls = url.split('/')
-        console.log(sub_urls);
         var images = [];
         var title;
         request(url, function (error, response, body) {

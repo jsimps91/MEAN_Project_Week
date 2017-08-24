@@ -13,7 +13,12 @@ export class PinFormComponent implements OnInit {
   section = 1;
 
   pin = new Pin();
-  
+  new_board = {
+    title: '', 
+    description: '', 
+    category: '',
+  }
+
   images = [];
   boards = [];
 
@@ -35,9 +40,23 @@ export class PinFormComponent implements OnInit {
   }
 
   submitDescAndBoard(){
-    this._pinService.createPin(this.pin).then(response => {
-      this._router.navigateByUrl(`/pin/${response._id}`)
-    }).catch(err => console.log(err));
+    if (this.pin.board == '*new*'){
+      this.section += 1;
+    } else {
+      this._pinService.createPin(this.pin).then(response => {
+        this._router.navigateByUrl(`/pin/${response._id}`)
+      }).catch(err => console.log(err));
+    }
+  }
+
+  createBoard(){
+    console.log("ABOUT TO CREATE BOARD")
+    this._boardService.createBoard(this.new_board)
+    .then((response) =>{
+      console.log("BOARD SUCCESSFULLY CREATED", response)
+      this.pin.board = response._id;
+      this.submitDescAndBoard();
+    })
   }
 
   ngOnInit() {
