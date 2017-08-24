@@ -9,7 +9,8 @@ var UserSchema = new mongoose.Schema({
     age: String,
     gender: String,
     password: String,
-    boards: [{type: Schema.Types.ObjectId, ref: 'Board'}]
+    boards: [{type: Schema.Types.ObjectId, ref: 'Board'}],
+    pins: [{type: Schema.Types.ObjectId, ref: 'Pin'}]
 });
 
 mongoose.model('User', UserSchema);

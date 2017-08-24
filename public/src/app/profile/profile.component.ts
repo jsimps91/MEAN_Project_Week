@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
 
   user: User
   subscription: Subscription
+  view;
+  currentUser;
 
   constructor(private _route: ActivatedRoute,private _router: Router, private _userService: UserService) { }
 
@@ -22,7 +24,27 @@ export class ProfileComponent implements OnInit {
         console.log("TaskDetailsComponent loaded and url id given is: ", params.get('id'));
         return this._userService.showProfile(params.get('id'));
       }).subscribe(user => this.user = user);
-    
+    this.view = "boards";
+    this._userService.getCurrentUser()
+      .then(response => {
+        if (response === {}) {
+          console.log('NO CURRENT USER');
+        } else {
+          this.currentUser = response          
+        }
+
+      })
+      .catch(err => console.log(err));  
+  }
+
+  pins(){
+    this.view = "pins"
+  }
+  boards(){
+    this.view = "boards"
+  }
+  edit(){
+    this.view= "edit"
   }
 
 

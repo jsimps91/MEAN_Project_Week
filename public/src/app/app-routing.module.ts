@@ -21,7 +21,7 @@ const routes: Routes = [
     {path: 'pin/:id', component: PinDetailComponent},
     {path: 'board/new', component: BoardFormComponent},
     {path: 'profile/:id', component: ProfileComponent},
-    {path: 'board/:id', component: BoardDetailComponent}
+    {path: 'board/:id', component: BoardDetailComponent},
     
 ]
   

@@ -38,5 +38,11 @@ export class UserService {
     .toPromise();
   }
 
+  updateUser(id ,user){
+    return this._http.post(`api/update_user/${id}`, user)
+    .map(data => data.json())
+    .toPromise(); 
+  }
+
 
 }

@@ -16,6 +16,8 @@ module.exports = {
                     password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
                     age: req.body.age
                 });
+                newUser.boards = [];
+                newUser.pins = [];
                 newUser.save(function(err) {
                     if (err) {
                         res.json(err);
@@ -73,7 +75,7 @@ module.exports = {
     showProfile: function(req, res){
         console.log("SHOW PROFILE MADE IT TO CONTROLLER")
         User.findOne({_id: req.params.id})
-        .populate('boards')
+        .populate('boards').populate('pins')
         .exec(function(err, user){
             if(err){
                 console.log("ERROR:", err);

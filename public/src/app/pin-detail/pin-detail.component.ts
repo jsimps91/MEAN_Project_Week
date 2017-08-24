@@ -11,11 +11,25 @@ import { Pin } from '../pin';
 })
 export class PinDetailComponent implements OnInit {
   pin: Pin;
+  pin_id;
+  message = '';
+  comments = [];
 
   constructor(private _route: ActivatedRoute, private _pinService: PinService) { 
     this._route.paramMap.switchMap(params => {
+      this.pin_id = params.get('id');
       return this._pinService.retrievePin(params.get('id'))
-    }).subscribe(pin => this.pin = pin);;
+    }).subscribe(pin => {
+      this.pin = pin;
+      this.comments = pin.comments;
+    });;
+  }
+
+  sendComment(){
+    this._pinService.addComment(this.pin_id, this.message).then(response => {
+      this.comments.push(response);
+      this.message = '';
+    }).catch(err => console.log(err));
   }
 
   ngOnInit() {
