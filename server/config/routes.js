@@ -73,6 +73,11 @@ module.exports = function(app){
         users.searchByUser(req, res);
     })
 
+    app.post('/api/searchByTopic', function(req, res) {
+        console.log('MADE IT TO THE ROUTES');
+        boards.searchByTopic(req, res);
+    })
+
     // incorporate Angular for all other routes
     app.all('*', (req, res) => {
         res.sendFile(path.resolve('./public/dist/index.html'));

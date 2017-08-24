@@ -68,5 +68,33 @@ module.exports = {
                 res.json(pin)
             }
         })
-    }
+    },
+
+    searchByTopic: function(req, res) {
+        console.log('AT BACK END: ', req.body);
+        Board.find({category: req.body.topic}).populate("pins").exec(function(err, boards) {
+            if (err) {
+                console.log(err);
+            } else {
+                var pinsArr = [];
+                if (boards.length === 0) {
+                    res.json({
+                        'message': "There are no boards in that topic yet.  Feel free to make one!"
+                    })
+                } else {
+                    for (var i = 0; i < boards.length; i++) {
+                        for (var j = 0; j < boards[i].pins.length; j++) {
+                            pinsArr.push(boards[i].pins[j]);
+                        }
+                    };
+                    console.log('BACK END, PINS ARRAY: ', pinsArr);
+                    res.json({
+                        'message': 'Here are some pins!',
+                        'pins': pinsArr,
+                    })
+                }
+            }
+        })
+    },
+
 };
