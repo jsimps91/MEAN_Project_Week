@@ -18,7 +18,7 @@ export class PinFormComponent implements OnInit {
     description: '', 
     category: '',
   }
-
+  
   images = [];
   boards = [];
 

@@ -1,12 +1,14 @@
 <app-nav></app-nav>
 <div id='pinfo'>
-  <h1>{{pin.title}}</h1>
+  <h1>{{pin.title}} <button (click)='repin()'>Save</button></h1>
   <img src={{pin.image}} alt="Placeholder for pin image">
   <a href={{pin.source_link}}>Read It</a>
   <p>{{pin.description}}</p>
   <p>Published {{pin.createdAt | date}}</p>
   <p><span class='bold'>{{pin._user.fullName}}</span> saved to <span class='bold'>{{pin._board.title}}</span></p>
   <p>{{pin._board.description}}</p>
+  <p *ngIf='pin.repins == 1'>{{pin.repins}} repin</p>
+  <p *ngIf='pin.repins > 1'>{{pin.repins}} repins</p>
   <h3>Comments</h3>
   <div>
     <div id='comment' *ngFor='let comment of comments'>

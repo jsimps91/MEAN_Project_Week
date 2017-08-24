@@ -10,9 +10,7 @@ import { PinFormComponent } from "./pin-form/pin-form.component";
 import { BoardFormComponent } from "./board-form/board-form.component";
 import { BoardDetailComponent } from "./board-detail/board-detail.component";
 import { SearchResultsComponent } from './home/search-results/search-results.component';
-
-
-
+import { PinRepinComponent } from "./pin-repin/pin-repin.component";
 
 const routes: Routes = [
     {path: '', pathMatch: 'full', component: LoginRegComponent, children: []},
@@ -22,7 +20,7 @@ const routes: Routes = [
     {path: 'board/new', component: BoardFormComponent},
     {path: 'profile/:id', component: ProfileComponent},
     {path: 'board/:id', component: BoardDetailComponent},
-    
+    {path: 'pin/repin/:id', component: PinRepinComponent},
 ]
   
   @NgModule({

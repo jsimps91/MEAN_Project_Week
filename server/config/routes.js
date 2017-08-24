@@ -67,7 +67,11 @@ module.exports = function(app){
 
     app.get('/api/getAllPins', function(req, res) {
         pins.getAllPins(req, res);
-    })
+    });
+
+    app.get('/api/updateRepins/:id', function(req, res) {
+        pins.updateRepins(req, res);
+    });
 
     // incorporate Angular for all other routes
     app.all('*', (req, res) => {
