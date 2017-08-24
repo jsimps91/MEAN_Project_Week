@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-a, i {
-    color: #2D571A
+p, label, h1, h2, h3, h4, h5, h6, legend, a, i{
+    color: #2D571A;
 }
 
-p, label, h1, h2, h3, h4, h5, h6, legend{
-    font-family: Helvetica, sans-serif;
+.green{
     color: #2D571A;
+}
+.button{
+    background-color: #2D571A;
+    color: #E4E693;
 }
