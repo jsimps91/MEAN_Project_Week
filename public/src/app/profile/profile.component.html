@@ -1,3 +1,4 @@
+<div class="container">
 <app-nav></app-nav>
 <br>
 <div [ngClass]="'div'">
@@ -17,8 +18,10 @@
 <h3 *ngIf='user._id!=currentUser._id && currentUser.following.indexOf(user._id) == -1'><a [ngClass]="'link'" (click)="follow(user._id)">Follow</a></h3>
 <h3 *ngIf='user._id!=currentUser._id && currentUser.following.indexOf(user._id) > -1'><a [ngClass]="'link'" (click)="unfollow(user._id)">Unfollow</a></h3>
 <div *ngIf="view=='boards'">
-  <span *ngFor="let board of user.boards">
+  <span  *ngFor="let board of user.boards" [ngClass]="'inline'">
+    <span class="boards">
     <app-board [board]="board"></app-board>
+    </span>
   </span>
   </div>
   <div *ngIf="view=='pins'">
@@ -49,4 +52,5 @@
       <p *ngIf='following.followers.length ==1'>{{following.followers.length}} follower</p>
     </div>
   </a>
+</div>
 </div>
