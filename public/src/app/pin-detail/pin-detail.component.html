@@ -6,7 +6,7 @@
     <p><a class = 'unindent2 bold' [ngClass]="'link'" href={{pin.source_link}}>Read It</a></p>
     <p>{{pin.description}}</p>
     <p>Published {{pin.createdAt | date}}</p>
-    <p class = 'unindent'><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', pin._user._id]">{{pin._user.fullName}}</a></span> saved to <span class='bold'><a [ngClass]="'link'" [routerLink]="['/board', pin._board._id]">{{pin._board.title}}</a></span></p>
+    <p class = 'unindent2'><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', pin._user._id]">{{pin._user.fullName}}</a></span> saved to <span class='bold'><a [ngClass]="'link'" [routerLink]="['/board', pin._board._id]">{{pin._board.title}}</a></span></p>
     <p>{{pin._board.description}}</p>
     <p *ngIf='pin.repins == 1'>{{pin.repins}} repin</p>
     <p *ngIf='pin.repins > 1'>{{pin.repins}} repins</p>
