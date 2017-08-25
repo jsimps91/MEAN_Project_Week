@@ -1,3 +1,5 @@
+<app-nav></app-nav>
+<br>
 <div [ngClass]="'div'">
   <h1 [ngClass]="'link'"> {{ user.fullName }}</h1>
   <h3 [ngClass]="'inline'" *ngIf="user.boards.length==1"><a [ngClass]="'link'" (click)="boards()">{{ user.boards.length }} board  |  </a></h3>

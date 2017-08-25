@@ -29,3 +29,8 @@ p, label, h1, h2, h3, h4, h5, h6, legend, a, i{
     width: 500px;
     background-size: cover;
 }
+.pin{
+    height: 300px;
+    width: 200px;
+    background-size: cover;
+}
