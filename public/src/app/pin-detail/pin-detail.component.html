@@ -5,14 +5,14 @@
   <a [ngClass]="'link'" href={{pin.source_link}}>Read It</a>
   <p>{{pin.description}}</p>
   <p>Published {{pin.createdAt | date}}</p>
-  <p><span class='bold'>{{pin._user.fullName}}</span> saved to <span class='bold'>{{pin._board.title}}</span></p>
+  <p><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', pin._user._id]">{{pin._user.fullName}}</a></span> saved to <span class='bold'><a [ngClass]="'link'" [routerLink]="['/board', pin._board._id]">{{pin._board.title}}</a></span></p>
   <p>{{pin._board.description}}</p>
   <p *ngIf='pin.repins == 1'>{{pin.repins}} repin</p>
   <p *ngIf='pin.repins > 1'>{{pin.repins}} repins</p>
   <h4 [ngClass]="'link'">Comments</h4>
   <div>
     <div id='comment' *ngFor='let comment of comments'>
-      <p><span class='bold'>{{ comment.commenter }}</span> - {{ comment.content }}</p>
+      <p><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', comment._user]">{{ comment.commenter }}</a></span> - {{ comment.content }}</p>
     </div>
     <div id='comment form'>
         <form (submit)='sendComment()'>
