@@ -112,6 +112,22 @@ module.exports = {
                 });
             }
         })
+    },
+
+    setTopics: function(req, res) {
+        console.log('AT THE DEEP BACK END', req.body)
+        var currUser = req.session.currUser;
+        User.findOne({email: currUser.email}, function(err, user) {
+            user.topics = req.body;
+            user.save(function(err) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log('IT FUCKING WORKED');
+                    res.json(user);
+                }
+            })
+        });
     }
 
 };

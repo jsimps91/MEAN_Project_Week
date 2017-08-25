@@ -53,4 +53,10 @@ export class UserService {
     .toPromise();
   }
 
+  setTopics(topics) {
+    return this._http.post('/api/set_topics', topics)
+    .map(data => data.json())
+    .toPromise();
+  }
+
 }

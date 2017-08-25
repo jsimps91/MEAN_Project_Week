@@ -98,6 +98,24 @@ module.exports = {
     },
 
     getAllPins: function(req, res) {
+        // if(req.session.currUser) {
+        //     var topics = req.session.currUser.topics; 
+        //     var randTopic = topics[Math.floor(Math.random * topics.length)];           
+        // }
+        // var resArr = [];
+
+        // Board.find({category: randTopic}).populate('pins').exec((err, boards) => {
+        //     var resArr = [];
+        //     for(var j = 0; j < boards.length; j++) {
+        //         for(var k = 0; k < boards[j].pins.length; k++) {
+        //             resArr.push(boards[j].pins[k]);
+        //         }
+        //     }
+        //     console.log('THE OFFICIAL RES ARR: ', resArr);            
+        // });
+
+        // //console.log('THE OFFICIAL RES ARR: ', resArr);
+        // res.json(resArr);
         Pin.find({}, function(err, pins) {
             if (err) {
                 res.json(err);

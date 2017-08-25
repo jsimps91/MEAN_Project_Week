@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   getAllPins() {
     this._pinService.getAllPins()
     .then(data => {
+      console.log('BACK AT THE COMPONENT: ', data);
       this.allPins = data;
     })
     .catch(function(error) {

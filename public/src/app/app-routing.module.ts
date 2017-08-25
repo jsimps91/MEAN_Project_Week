@@ -11,9 +11,11 @@ import { BoardFormComponent } from "./board-form/board-form.component";
 import { BoardDetailComponent } from "./board-detail/board-detail.component";
 import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { PinRepinComponent } from "./pin-repin/pin-repin.component";
+import { ChooseTopicsComponent } from "./choose-topics/choose-topics.component";
 
 const routes: Routes = [
     {path: '', pathMatch: 'full', component: LoginRegComponent, children: []},
+    {path: 'choose_topics', pathMatch: 'full', component: ChooseTopicsComponent},    
     {path: 'home', pathMatch: 'full', component: HomeComponent},
     {path: 'pin/new', component: PinFormComponent},
     {path: 'pin/:id', component: PinDetailComponent},

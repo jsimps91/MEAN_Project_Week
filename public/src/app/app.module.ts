@@ -23,6 +23,7 @@ import { NavComponent } from './nav/nav.component';
 import { SearchResultsComponent } from './home/search-results/search-results.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { PinRepinComponent } from './pin-repin/pin-repin.component';
+import { ChooseTopicsComponent } from './choose-topics/choose-topics.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { PinRepinComponent } from './pin-repin/pin-repin.component';
     SearchResultsComponent,
     EditProfileComponent,
     PinRepinComponent,
+    ChooseTopicsComponent,
   ],
   imports: [
     BrowserModule,
