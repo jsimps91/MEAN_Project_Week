@@ -6,12 +6,28 @@
 img{
     width: 80%;
     display: block;
+    border-radius: 10px;
+    border: 3px solid lightgrey;
 }
 
 a{
     text-decoration: none;
+    margin-left: 0px;
+    padding-left: 0px;
 }
 
 .bold{
     font-weight: bold;
+}
+
+#text{
+    margin-top: 10px;
+}
+
+.unindent{
+    margin-left: -10px;
+}
+
+.unindent2{
+    margin-left: 0px;
 }

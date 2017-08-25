@@ -3,6 +3,16 @@
     vertical-align: top;
 }
 
+#board_pin_display{
+    column-width: 320px;
+    column-gap: 2px;
+    columns:3; 
+    width: 90%;
+    max-width: 970px;
+    margin: auto;
+    text-align:center;
+}
+
 .container {
     width: 1350px;
 }

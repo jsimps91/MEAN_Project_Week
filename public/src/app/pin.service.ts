@@ -22,6 +22,7 @@ export class PinService {
   }
 
   getAllPins() {
+    console.log('AT THE SERVICE GETTING ALL PINS');
     return this._http.get('/api/getAllPins').map(data => data.json()).toPromise();
   }
 

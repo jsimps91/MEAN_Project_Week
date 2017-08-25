@@ -26,6 +26,7 @@
     (change)="searchByTopic()"
     name="category"
     [(ngModel)]="topicSearchItem">
+    <option value="all">See All</option>
     <option value="Pickle Art">Pickle Art</option>
     <option value="Pickle Books">Pickle Books</option>
     <option value="Pickle Clothing">Pickle Clothing</option>
@@ -50,8 +51,8 @@
   <h3>{{ topicMessage }}</h3>
 
   <hr>
-  <div [ngClass]="'left_margin'">
-  <app-pin *ngFor="let pin of pinArr" [pin]="pin"></app-pin>
+  <div [ngClass]="'left_margin'" id='home_pin_display'>
+  <app-pin *ngFor="let pin of pinArr" [pin]="pin" [ngClass]="'pin'"></app-pin>
   </div>
 <a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
 
