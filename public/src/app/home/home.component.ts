@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
   getAllPins() {
     this._pinService.getAllPins()
     .then(data => {
-      this.allPins = data;
+      console.log(data);
+      this.allPins = data.pinsArr;
     })
     .catch(function(error) {
       console.log(error);

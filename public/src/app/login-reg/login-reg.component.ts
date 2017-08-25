@@ -52,8 +52,15 @@ export class LoginRegComponent implements OnInit {
     } else {
       this._userService.regAttempt(this.user)
         .then(data => {
-          // this.currUser = data;
-          this._router.navigateByUrl('/choose_topics');        
+          if (data.emailError) {
+            this.regErrors.push(data.emailError);
+            this.user = new User;
+            this.pwConfirm = '';
+          } else {
+            // this.currUser = data;
+            this._router.navigateByUrl('/choose_topics');             
+          }
+       
         })
         .catch(err => console.log(err));      
     }
