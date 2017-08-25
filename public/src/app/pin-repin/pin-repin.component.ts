@@ -4,6 +4,8 @@ import 'rxjs/add/operator/switchMap';
 import { PinService } from '../pin.service';
 import { Pin } from '../pin';
 import { BoardService } from "../board.service";
+import { UserService } from "../user.service";
+import { User } from "../user";
 
 @Component({
   selector: 'app-pin-repin',
@@ -15,21 +17,23 @@ export class PinRepinComponent implements OnInit {
 
   pin = new Pin();
   pin_id;
-
+  board_id;
   new_board = {
     title: '', 
     description: '', 
     category: '',
   }
+  currentUser = new User();
 
   boards = [];
   submitBoard(){
+    this.board_id = this.pin.board
     if (this.pin.board == '*new*'){
       this.section += 1;
     } else {
       this._pinService.updateRepins(this.pin_id).then(response => {
       this._pinService.createPin(this.pin).then(response => {
-        this._router.navigateByUrl(`/pin/${response._id}`)
+        this._router.navigateByUrl(`/board/${this.board_id}`)
       }).catch(err => console.log(err))}).catch(err => console.log(err));
     }
   }
@@ -48,7 +52,19 @@ export class PinRepinComponent implements OnInit {
     this.section -=1;
   }
   
-  constructor(private _route: ActivatedRoute, private _pinService: PinService, private _boardService: BoardService, private _router: Router) { 
+  getCurrentUser(){
+    this._userService.getCurrentUser()
+    .then(response => {
+      if (response === {}) {
+        console.log('NO CURRENT USER');
+      } else {
+        this.currentUser = response        
+      }
+    })
+    .catch(err => console.log(err)); 
+  }
+
+  constructor(private _route: ActivatedRoute, private _userService: UserService, private _pinService: PinService, private _boardService: BoardService, private _router: Router) { 
     this._route.paramMap.switchMap(params => {
       this.pin_id = params.get('id');
       return this._pinService.retrievePin(params.get('id'))
@@ -60,6 +76,7 @@ export class PinRepinComponent implements OnInit {
 
   ngOnInit() {
     this._boardService.getCurrUserBoards().then(response => this.boards = response).catch(err => console.log(err));
+    this.getCurrentUser();
   }
 
 }

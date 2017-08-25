@@ -1,5 +1,7 @@
+<div [ngClass]="'inline'">
 <app-nav></app-nav>
-<br>
+</div>
+<div [ngClass]="'inline'">
 <form (submit)='searchByUser()' #formData='ngForm' >
   <input
     type="text"
@@ -8,15 +10,16 @@
     placeholder = 'Find a Pinackle user'>
   <input [ngClass]="'button'" type="submit" value='search'>
 </form>
+</div>
 
-<h3>{{ resMsg }}</h3>
+<h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ resMsg }}</h3>
 
 <a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
 
 <br>
-<span>or search pickle pins by a topic</span>
+<span [ngClass]="'link'" [ngClass]="'left_margin'"> or search pickle pins by a topic</span>
 
-<form >
+<form>
   <select 
     (change)="searchByTopic()"
     name="category"
@@ -39,4 +42,6 @@
 <h3>{{ topicMessage }}</h3>
 
 <hr>
+<div [ngClass]="'left_margin'">
 <app-pin *ngFor="let pin of allPins" [pin]="pin"></app-pin>
+</div>

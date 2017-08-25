@@ -27,15 +27,6 @@ export class ProfileComponent implements OnInit {
       }).subscribe(user => this.user = user);
     console.log(this.user);
     this.view = "boards";
-    this._userService.getCurrentUser()
-      .then(response => {
-        if (response === {}) {
-          console.log('NO CURRENT USER');
-        } else {
-          this.currentUser = response        
-        }
-      })
-      .catch(err => console.log(err));  
   }
 
   getCurrentUser(){
@@ -69,10 +60,17 @@ export class ProfileComponent implements OnInit {
   }
 
   follow(id){
-    this._userService.followUser(id).then(response => this.currentUser = response).catch(err => console.log(err))
+    this._userService.followUser(id).then(response => {
+      this.currentUser = response;
+      this.user.followers.push(this.currentUser)
+    }).catch(err => console.log(err))
   }
 
   unfollow(id){
-    this._userService.unfollowUser(id).then(response => this.currentUser = response).catch(err => console.log(err))
+    this._userService.unfollowUser(id).then(response => {
+      this.currentUser = response;
+      let remove = this.user.followers.indexOf(this.currentUser._id);
+      this.user.followers.splice(remove, 1);
+    }).catch(err => console.log(err))
   }
 }
