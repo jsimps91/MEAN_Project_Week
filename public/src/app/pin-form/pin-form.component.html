@@ -39,7 +39,7 @@
           [(ngModel)]="pin.board"
           #board="ngModel"
         >
-          <option *ngFor='let board of boards' value={{board._id}}>{{board.title}}-{{board.description}}</option>
+          <option *ngFor='let board of boards' value={{board._id}}>{{board.title}}</option>
           <option value='*new*'>Create a new board</option>
         </select>
         <input [ngClass]="'button'" type="submit" value='Save' [disabled]='!form2Data.valid'>
