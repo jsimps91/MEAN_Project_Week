@@ -28,6 +28,10 @@ module.exports = function(app){
         users.follow(req, res);
     });
 
+    app.post('/api/unfollow', function(req, res){
+        users.unfollow(req, res);
+    });
+
     // board routes
     app.post('/api/create_board', function(req, res){
         console.log("CREATE BOARD MADE IT TO ROUTES", req.body)
@@ -84,6 +88,11 @@ module.exports = function(app){
     app.post('/api/searchByTopic', function(req, res) {
         console.log('MADE IT TO THE ROUTES');
         boards.searchByTopic(req, res);
+    })
+
+    app.post('/api/set_topics', function(req, res) {
+        console.log('MADE IT TO THE ROUTES');
+        users.setTopics(req, res);        
     })
 
     // incorporate Angular for all other routes

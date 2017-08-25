@@ -39,7 +39,8 @@ export class LoginRegComponent implements OnInit {
     }
   }
 
-  currUser;
+  // currUser;
+
 
   registrationAttempt() {
     this.regErrors = [];
@@ -51,8 +52,8 @@ export class LoginRegComponent implements OnInit {
     } else {
       this._userService.regAttempt(this.user)
         .then(data => {
-          this.currUser = data;
-          this._router.navigateByUrl('/home');        
+          // this.currUser = data;
+          this._router.navigateByUrl('/choose_topics');        
         })
         .catch(err => console.log(err));      
     }
@@ -71,7 +72,7 @@ export class LoginRegComponent implements OnInit {
         if (resData.error) {
           this.loginError = resData.error;
         } else {
-          this.currUser = resData;
+          // this.currUser = resData;
           this._router.navigateByUrl('/home');
         }
       }).catch(err => console.log(err));

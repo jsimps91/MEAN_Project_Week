@@ -1,0 +1,182 @@
+
+
+<div id="container">
+
+  <h1>Please choose at least 3 pickle topics that interest you:</h1>
+
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered" 
+  (mouseover)="mouseOvered=true" 
+  (mouseout)="mouseOvered=false"
+  (click)="onClick(0)" 
+  [class.selected]="selectedArr[0]">
+    <img 
+    class="topicImg" 
+    src="http://media.istockphoto.com/vectors/pickle-with-money-vector-id534975297" 
+    alt="">
+    <h4>Pickle Art!</h4>
+  </div>
+
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered1" 
+  (mouseover)="mouseOvered1=true" 
+  (mouseout)="mouseOvered1=false"
+  (click)="onClick(1)" 
+  [class.selected]="selectedArr[1]">
+    <img 
+    class="topicImg" 
+    src="https://images-na.ssl-images-amazon.com/images/I/513wUYTfgJL.jpg" 
+    alt="">
+    <h4>Pickle Books!</h4>
+  </div>
+  
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered2" 
+  (mouseover)="mouseOvered2=true" 
+  (mouseout)="mouseOvered2=false"
+  (click)="onClick(2)" 
+  [class.selected]="selectedArr[2]">    
+  <img 
+    class="topicImg" 
+    src="https://rlv.zcache.com/im_a_really_big_dill_deal_pickle_pickles_hat-r858b68077bd24d4a9d47f0345069a4ed_v9wqr_8byvr_324.jpg" 
+    alt="">
+    <h4>Pickle Clothing!</h4>
+  </div>
+  
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered3" 
+  (mouseover)="mouseOvered3=true" 
+  (mouseout)="mouseOvered3=false"
+  (click)="onClick(3)" 
+  [class.selected]="selectedArr[3]">    
+  <img 
+    class="topicImg" 
+    src="https://i.pinimg.com/736x/c2/82/b6/c282b665fb681d82a78d8957aca45e2a--cocktail-glass-bloody-mary.jpg" 
+    alt="">
+    <h4>Pickle Cocktails!</h4>
+  </div>
+
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered4" 
+  (mouseover)="mouseOvered4=true" 
+  (mouseout)="mouseOvered4=false"
+  (click)="onClick(4)" 
+  [class.selected]="selectedArr[4]">    
+  <img 
+    class="topicImg" 
+    src="http://img.foodnetwork.com/FOOD/2010/08/11/EA1C07_Kinda-Sorta-Sours_s4x3_lg.jpg" 
+    alt="">
+    <h4>Pickle DIY!</h4>
+  </div>
+  
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered5" 
+  (mouseover)="mouseOvered5=true" 
+  (mouseout)="mouseOvered5=false"
+  (click)="onClick(5)" 
+  [class.selected]="selectedArr[5]">    
+  <img 
+    class="topicImg" 
+    src="https://s-media-cache-ak0.pinimg.com/736x/a8/ef/a0/a8efa08f7405747016714922a8e75ff2--funny-facts-weird-facts.jpg" 
+    alt="">
+    <h4>Pickle Facts!</h4>
+  </div>  
+      
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered6" 
+  (mouseover)="mouseOvered6=true" 
+  (mouseout)="mouseOvered6=false"
+  (click)="onClick(6)" 
+  [class.selected]="selectedArr[6]">
+    <img 
+    class="topicImg" 
+    src="https://www.biography.com/.image/t_share/MTE1ODA0OTcxNjMyNzg5MDA1/benjamin-franklin-9301234-2-402.jpg" 
+    alt="">
+    <h4>Pickle History!</h4>
+  </div>
+
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered7" 
+  (mouseover)="mouseOvered7=true" 
+  (mouseout)="mouseOvered7=false"
+  (click)="onClick(7)" 
+  [class.selected]="selectedArr[7]">
+    <img 
+    class="topicImg" 
+    src="http://i.huffpost.com/gen/2763176/thumbs/o-ETSY-570.jpg?7" 
+    alt="">
+    <h4>Pickle Home Decor!</h4>
+  </div>
+  
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered8" 
+  (mouseover)="mouseOvered8=true" 
+  (mouseout)="mouseOvered8=false"
+  (click)="onClick(8)" 
+  [class.selected]="selectedArr[8]">
+    <img 
+    class="topicImg" 
+    src="https://i.redd.it/bvqwwgw21p6z.jpg" 
+    alt="">
+    <h4>Pickle Humor!</h4>
+  </div>
+  
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered9" 
+  (mouseover)="mouseOvered9=true" 
+  (mouseout)="mouseOvered9=false"
+  (click)="onClick(9)" 
+  [class.selected]="selectedArr[9]">
+    <img 
+    id="girl" 
+    class="topicImg" 
+    src="https://s-media-cache-ak0.pinimg.com/736x/4a/28/f6/4a28f6a78fde52b2bd9c3c460ac4c214--surrealism-photography-film-photography.jpg" 
+    alt="">
+    <h4>Pickle Photography!</h4>
+  </div>
+
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered10" 
+  (mouseover)="mouseOvered10=true" 
+  (mouseout)="mouseOvered10=false"
+  (click)="onClick(10)" 
+  [class.selected]="selectedArr[10]">
+    <img 
+    class="topicImg" 
+    src="https://popculturepicklescom.files.wordpress.com/2016/11/phone-case-for-pickle-addicts-2.jpg?w=730" 
+    alt="">
+    <h4>Pickle Pop Culture!</h4>
+  </div>
+  
+  <div 
+  class="topic" 
+  [class.hovered]="mouseOvered11" 
+  (mouseover)="mouseOvered11=true" 
+  (mouseout)="mouseOvered11=false"
+  (click)="onClick(11)" 
+  [class.selected]="selectedArr[11]">
+    <img 
+    class="topicImg" 
+    src="https://lh3.googleusercontent.com/F3AhSTGXlkY7tVmc8_KLLtqpke-WJwq2Pyr9iRd2G4kHNong-0Y7MqfCtmlh5b1l8yAl-En7rfdd1j-WIjo8NSLZng=s535-c" 
+    alt="">
+    <h4>Pickle Recipes!</h4>
+  </div>  
+  <br>
+  <button id="continue" [disabled]="currUserTopics.length < 3" (click)="continue()">Continue</button>
+
+
+
+</div>
+
+

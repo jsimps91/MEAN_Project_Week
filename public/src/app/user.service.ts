@@ -53,7 +53,17 @@ export class UserService {
     .toPromise();
   }
 
+  setTopics(topics) {
+    return this._http.post('/api/set_topics', topics)
+    .map(data => data.json())
+    .toPromise();
+  }
+
   followUser(id){
     return this._http.post('/api/follow/', {id: id}).map(data => data.json()).toPromise();
+  }
+
+  unfollowUser(id){
+    return this._http.post('/api/unfollow/', {id: id}).map(data => data.json()).toPromise();
   }
 }

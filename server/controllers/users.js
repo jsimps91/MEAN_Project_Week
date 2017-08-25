@@ -111,8 +111,23 @@ module.exports = {
                     }
                 });
             }
+        })
+    },
+
+    setTopics: function(req, res) {
+        var currUser = req.session.currUser;
+        User.findOne({email: currUser.email}, function(err, user) {
+            user.topics = req.body;
+            user.save(function(err) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.json(user);
+                }
+            })
         });
     },
+
 
     follow: function (req, res){
         User.findOne({_id: req.body.id}, function(err, user){
@@ -127,6 +142,32 @@ module.exports = {
                         cuser.save(function(err){
                             if (err){
                                 console.log('Could not add following');
+                            }
+                            else {
+                                res.json(cuser);
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    },
+
+    unfollow: function (req, res){
+        User.findOne({_id: req.body.id}, function(err, user){
+            let removeFollower = user.followers.indexOf(req.session.currUser._id);
+            user.followers.splice(removeFollower, 1);
+            user.save(function (err){
+                if (err){
+                    console.log('Could not remove follower');
+                } 
+                else {
+                    User.findOne({_id: req.session.currUser._id}, function(err, cuser){
+                        let removeFollowing = cuser.following.indexOf(user._id);
+                        cuser.following.splice(removeFollowing, 1);
+                        cuser.save(function(err){
+                            if (err){
+                                console.log('Could not remove following');
                             }
                             else {
                                 res.json(cuser);

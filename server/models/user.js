@@ -9,6 +9,7 @@ var UserSchema = new mongoose.Schema({
     age: String,
     gender: String,
     password: String,
+    topics: [],
     boards: [{type: Schema.Types.ObjectId, ref: 'Board'}],
     pins: [{type: Schema.Types.ObjectId, ref: 'Pin'}],
     followers: [{type: Schema.Types.ObjectId, ref:'User'}],
