@@ -25,6 +25,10 @@ export class PinService {
     return this._http.get('/api/getAllPins').map(data => data.json()).toPromise();
   }
 
+  getRelevantPins() {
+    return this._http.get('/api/getRelevantPins').map(data => data.json()).toPromise();
+  }
+
   addComment(id, comment){
     return this._http.post(`/api/addComment/${id}`, {comment: comment}).map(data => data.json()).toPromise();
   }
