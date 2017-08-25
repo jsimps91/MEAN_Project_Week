@@ -13,7 +13,7 @@ import { Pin } from "../pin";
 })
 export class HomeComponent implements OnInit {
 
-  currentUser: User;
+  currentUser= new User();
 
   constructor(private _router: Router, private _userService: UserService, private _pinService: PinService, private _boardService: BoardService) { }
 

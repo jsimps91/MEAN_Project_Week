@@ -3,6 +3,8 @@ export class Board {
         public title = '',
         public description = '',
         public category = '',
-        public pins = []
+        public pins = [],
+        public _user = null,
+        public _id = null,
     ){}
 }

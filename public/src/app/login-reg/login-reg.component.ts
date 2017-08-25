@@ -16,7 +16,7 @@ export class LoginRegComponent implements OnInit {
   ngOnInit() {
   }
 
-  user = new User;
+  user = new User();
 
   pwConfirm = '';
   passwordMatch = false;
