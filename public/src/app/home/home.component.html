@@ -43,9 +43,7 @@
   <h3>{{ topicMessage }}</h3>
 
   <hr>
-  <div [ngClass]="'left_margin'">
-  <app-pin *ngFor="let pin of allPins" [pin]="pin"></app-pin>
-  </div>
+
 <a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
 
 <br>
@@ -54,7 +52,7 @@
 
 
 
-<hr>
+
 <div [ngClass]="'left_margin'">
 <app-pin *ngFor="let pin of allPins" [pin]="pin"></app-pin>
 </div>

@@ -14,6 +14,7 @@ export class BoardDetailComponent implements OnInit {
 
   board = new Board();
   subscription: Subscription;
+  coverImage = "https://www.beautycolorcode.com/d4d855-2880x1800.png";
 
   constructor(private _route: ActivatedRoute,private _router: Router, private _boardService: BoardService) { }
 

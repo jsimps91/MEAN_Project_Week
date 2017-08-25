@@ -5,3 +5,10 @@ span{
     height: 400px;
 
 }
+.container {
+    width: 1350px;
+}
+.boards{
+   padding: 10px;
+   margin: 10px;
+}
