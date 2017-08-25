@@ -15,7 +15,7 @@ export class ChooseTopicsComponent implements OnInit {
   }
 
   selectedArr = [false, false, false, false, false, false, false, false, false, false, false, false];
-  choicesArr = ["Pickle Art", "Pickle Books", "Pickle Clothing", "Pickle Cocktails", "Pickle DIY", "Pickle Facts", "Pickle History", "Pickle Home Decor", "Pickle Humor", "Pickle Photography", "Pickle Pop Culture", "Pickle Recipes"];
+  choicesArr = ["Pickle Art", "Pickle Books", "Pickle Clothing", "Pickle Cockatails", "Pickle DIY", "Pickle Facts", "Pickle History", "Pickle Home Decor", "Pickle Humor", "Pickle Photography", "Pickle Pop Culture", "Pickle Recipes"];
   currUserTopics = [];
 
   onClick(num) {

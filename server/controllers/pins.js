@@ -125,7 +125,7 @@ module.exports = {
 
 
             var categories = [];
-            for(var i = 0; i < topics.length - 1; i++) {
+            for(var i = 0; i < topics.length; i++) {
                 categories.push({ category: topics[i] })            
             }
             console.log('THE CATEGORIES!!', categories);
