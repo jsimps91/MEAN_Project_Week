@@ -16,6 +16,7 @@ export class LoginRegComponent implements OnInit {
   ngOnInit() {
   }
 
+  loginModal= true;
   user = new User();
 
   pwConfirm = '';
@@ -86,4 +87,10 @@ export class LoginRegComponent implements OnInit {
 
   }
 
+  registerModal(){
+    this.loginModal= false;
+  }
+  loginModalSwitch(){
+    this.loginModal= true;
+  }
 }

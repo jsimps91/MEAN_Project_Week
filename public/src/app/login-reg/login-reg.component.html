@@ -1,98 +1,64 @@
-<div [ngClass]="'div'">
-  <div id="logo">
-    <img [src]="'assets/logo.png'">
-</div>  
-    <fieldset>
-      <legend>Login</legend>
-      <form (submit)="loginAttempt()" #formData='ngForm'>
-        <label for="email">Email: </label>
-        <input 
-          type="text"
-          name="email"
-          id="email"
-          [(ngModel)]="attemptedUser.email"
-        >
-        <label for="password">Password: </label>
-        <input 
-          type="password"
-          name="password"
-          id="password"
-          [(ngModel)]="attemptedUser.password"
-        >
-        <p *ngIf="loginError" class="red">{{ loginError }}</p>
-        <input [ngClass]="'button'" type="submit" name="submit" value="Login">
-      </form>    
-    </fieldset>
+<script type="text/javascript">
+  $(window).on('load', function () {
+    $('#pickleModal').modal('show');
+  });
 
-    <fieldset>
-      <legend>Registration</legend>
-      <p><strong>All fields are required for a new user</strong></p>
-      <p *ngFor="let err of regErrors" class="red">{{ err }}</p>
-      <form (submit)="registrationAttempt()" #formData='ngForm'>
-        <label for="fullName">Full Name:</label>
-        <input 
-          type="text" 
-          id="fullName" 
-          name="fullName"
-          required 
-          [(ngModel)]="user.fullName">
-        <br>
-        <label for="email">Email:</label>
-        <input 
-          type="text" 
-          id="email"
-          name="email"
-          required
-          [(ngModel)]="user.email">
-        <br>
-        <label for="age">Age:</label>
-        <input 
-          type="text" 
-          id="age" 
-          name="age"
-          required
-          [(ngModel)]="user.age">
-        <br>
-        <label>Gender:</label>
-        <label for="male">Male</label>
-        <input type="radio" 
-          id="male" 
-          name="gender"
-          value="male"
-          required
-          [(ngModel)]="user.gender">
-        <label for="female">Female</label>
-        <input type="radio" 
-          id="female" 
-          name="gender"
-          value="female"
-          [(ngModel)]="user.gender">
-        <label for="other">Other</label>
-        <input type="radio" 
-          id="other" 
-          name="gender"
-          value="other"
-          [(ngModel)]="user.gender">
-        <br>
-        <label for="password">Password</label> 
-        <input 
-          type="text" 
-          id="password" 
-          name="password"
-          required 
-          [(ngModel)]="user.password">
-        <br>
-        <label for="confirmPassword">Confirm Password</label>
-        <input 
-          type="text" 
-          id="confirmPassword"
-          name="confirmPassword"
-          required
-          [(ngModel)]="pwConfirm"
-        >
-        <br>
-        <input [ngClass]="'button'" [disabled]='!formData.valid' type="submit" value="Register">
-      </form>    
-    </fieldset>
+</script>
+<div id="pickleModal" class="modal show" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img [src]="'assets/logo.png'">
+      </div>
+      <div *ngIf="loginModal==true" class="modal-body">
+        <h3 [ngClass]="'link'">Login</h3>
+        <form (submit)="loginAttempt()" #formData='ngForm'>
+          <label for="email">Email: </label>
+          <input type="text" name="email" id="email" [(ngModel)]="attemptedUser.email">
+          <label for="password">Password: </label>
+          <input type="password" name="password" id="password" [(ngModel)]="attemptedUser.password">
+          <p *ngIf="loginError" class="red">{{ loginError }}</p>
+          <input [ngClass]="'button'" type="submit" name="submit" value="Login">
+        </form>
+      </div>
+      <div *ngIf="loginModal==true" class="modal-footer">
+        <button [ngClass]="'button'" (click)="registerModal()">No account? Register</button>
+      </div>
+      <div *ngIf="loginModal==false" class="modal-body">
 
+        <h3 [ngClass]="'link'">Registration</h3>
+        <p><strong>All fields are required for a new user</strong></p>
+        <p *ngFor="let err of regErrors" class="red">{{ err }}</p>
+        <form (submit)="registrationAttempt()" #formData='ngForm'>
+          <label for="fullName">Full Name:</label>
+          <input type="text" id="fullName" name="fullName" required [(ngModel)]="user.fullName">
+          <br>
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required [(ngModel)]="user.email">
+          <br>
+          <label for="age">Age:</label>
+          <input type="text" id="age" name="age" required [(ngModel)]="user.age">
+          <br>
+          <label>Gender:</label>
+          <label for="male">Male</label>
+          <input type="radio" id="male" name="gender" value="male" required [(ngModel)]="user.gender">
+          <label for="female">Female</label>
+          <input type="radio" id="female" name="gender" value="female" [(ngModel)]="user.gender">
+          <label for="other">Other</label>
+          <input type="radio" id="other" name="gender" value="other" [(ngModel)]="user.gender">
+          <br>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required [(ngModel)]="user.password">
+          <br>
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required [(ngModel)]="pwConfirm">
+          <br>
+          <input [ngClass]="'button'" [disabled]='!formData.valid' type="submit" value="Register">
+        </form>
+      </div>
+      <div *ngIf="loginModal==false" class="modal-footer">
+        <button [ngClass]="'button'" (click)="loginModalSwitch()">Login</button>
+      </div>
+    </div>
   </div>
+</div>
