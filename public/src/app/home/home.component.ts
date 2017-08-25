@@ -17,17 +17,28 @@ export class HomeComponent implements OnInit {
 
   constructor(private _router: Router, private _userService: UserService, private _pinService: PinService, private _boardService: BoardService) { }
 
-  allPins;
+  pinArr;
 
   getAllPins() {
     this._pinService.getAllPins()
     .then(data => {
-      console.log(data);
-      this.allPins = data.pinsArr;
+      console.log(data.pinsArr);
+      this.pinArr = data.pinsArr;
     })
     .catch(function(error) {
       console.log(error);
     })
+  }
+
+  getRelevantPins() {
+    this._pinService.getRelevantPins()
+    .then(data => {
+      console.log(data);
+      this.pinArr = data.pinsArr;
+    })
+    .catch(function(error) {
+      console.log(error);
+    }) 
   }
 
   getCurrUser() {
@@ -48,8 +59,8 @@ export class HomeComponent implements OnInit {
   userSearchResults;  
 
   ngOnInit() {
-    this.getAllPins();
-    this.getCurrUser();
+    this.getCurrUser();    
+    this.getRelevantPins();
     this.userSearchItem = '';
     this.userSearchResults = [];
     this.resMsg = '';
@@ -62,7 +73,7 @@ export class HomeComponent implements OnInit {
         if (data.users) {
           this.userSearchResults = data.users;
           if (data.pins) {
-            this.allPins = data.pins;
+            this.pinArr = data.pins;
           }
         }
     })
@@ -81,7 +92,7 @@ export class HomeComponent implements OnInit {
     .then(data => {
       this.topicMessage = data.message;
       if (data.pins) {
-        this.allPins = data.pins;
+        this.pinArr = data.pins;
       }
     })
     .catch(err => console.log(err));

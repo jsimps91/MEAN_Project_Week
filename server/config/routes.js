@@ -81,6 +81,10 @@ module.exports = function(app){
         pins.getAllPins(req, res);
     });
 
+    app.get('/api/getRelevantPins', function(req, res) {
+        pins.getRelevantPins(req, res);
+    });
+
     app.get('/api/updateRepins/:id', function(req, res) {
         pins.updateRepins(req, res);
     });
