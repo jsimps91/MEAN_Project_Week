@@ -1,6 +1,10 @@
-<div [ngClass]="'div'">
+
+    
+ 
+<div id ="nav" [ngClass]="'inline'" [ngClass]="'div'">
+    <a [routerLink]="['/home']"> <img [src]="'assets/icon.png'"></a>
     <a [ngClass]="'link'" (click)="logout()">Logout</a>
     <a [ngClass]="'link'" [routerLink]="['/board/new']">New Board</a>
     <a [ngClass]="'link'" [routerLink]="['/pin/new']">New Pin</a>
-    <a [ngClass]="'link'" *ngIf="currentUser" [routerLink]="['/profile', currentUser._id]">Profile</a>
+    <a [ngClass]="'link'" *ngIf="currentUser" [routerLink]="['/profile', currentUser._id]">{{currentUser.fullName}}</a>
 </div>

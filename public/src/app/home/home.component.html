@@ -12,15 +12,9 @@
 </form>
 </div>
 
-<h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ resMsg }}</h3>
-
-<a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
-
-<br>
-<span [ngClass]="'link'" [ngClass]="'left_margin'"> or search pickle pins by a topic</span>
-
-<form>
-  <select 
+<p [ngClass]="'inline'" [ngClass]="'link'" [ngClass]="'left_margin'"> or search pickle pins by a topic</p>
+<form [ngClass]="'inline'">
+  <select class="selectpicker show-tick"
     (change)="searchByTopic()"
     name="category"
     [(ngModel)]="topicSearchItem">
@@ -37,9 +31,23 @@
     <option value="Pickle Pop Culture">Pickle Pop Culture</option>
     <option value="Pickle Recipes">Pickle Recipes</option>
   </select>
-</form>
+</form><br>
+
+
+<h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ resMsg }}</h3>
+
+
+
 
 <h3>{{ topicMessage }}</h3>
+
+<a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
+
+<br>
+
+
+
+
 
 <hr>
 <div [ngClass]="'left_margin'">

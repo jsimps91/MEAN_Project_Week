@@ -1,22 +1,19 @@
 
 #container {
     width: 970px;
-    border: 2px solid forestgreen;
     margin: 10px;
     text-align: center;
-    border-radius: 10px;
-    padding-bottom: 20px;
+
 }
 
 .topic {
     width: 20%;
     margin: 10px;
     padding: 10px;
-    border: 3px solid 	#457722
+    border: 3px solid 	#2D571A;
     display: inline-block;
     height: 250px;
-    border-radius: 10px;
-    background: lightgreen;
+    background: #457722;;
     vertical-align: top;
 }
 
@@ -24,24 +21,22 @@
     width: 90%;
     height: 150;
     margin: 10px;
-    border-radius: 5px;
-    border: 1px solid 	#457722
+    border: 1px solid 	#2D571A;
 }
 
 .hovered {
-    border: 3px solid darkorange;
+    border: 3px solid #E4E693;
 }
 
 #continue {
     margin: 20px;
     height: 50px;
     width: 30%;
-    border: 5px solid maroon;
-    background: red;
-    color: white;
     border-radius: 5px;
+    background-color: #2D571A;
+    color: #E4E693;
 }
 
 .selected {
-    background: orange;
+    background: #E4E693;
 }
