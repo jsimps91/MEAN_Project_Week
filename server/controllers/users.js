@@ -86,6 +86,30 @@ module.exports = {
         });
     },
 
+    update: function(req, res){
+        User.findById(req.params.id, function(err ,user){
+            if(err){
+                console.log("COULD NOT FIND USER")
+            }
+            else{
+                user.fullName= req.body.fullName;
+                user.email= req.body.email;
+                user.age = req.body.age;
+                user.gender = req.body.gender;
+                user.save(function(err, user){
+                    if(err){
+                        console.log("Couldn't update user")
+                        res.json({message: "There was a problem updating your info!"})
+                    }
+                    else{
+                        console.log("User updated!")
+                        res.json({message: "Profile successfully updated", user: user})
+                    }
+                })
+            }
+        })
+    },
+
     searchByUser: function(req, res) {
         User.find({fullName: req.body.name}, function(err, users) {
             if (err) {

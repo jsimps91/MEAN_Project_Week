@@ -32,6 +32,10 @@ module.exports = function(app){
         users.unfollow(req, res);
     });
 
+    app.post('/api/update_user/:id', function(req, res){
+        users.update(req, res)
+    })
+
     // board routes
     app.post('/api/create_board', function(req, res){
         console.log("CREATE BOARD MADE IT TO ROUTES", req.body)

@@ -13,32 +13,32 @@
   </form>
   </div>
 
-  <h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ resMsg }}</h3>
+<p [ngClass]="'inline'" [ngClass]="'link'" [ngClass]="'left_margin'"> or search pickle pins by a topic</p>
+<form [ngClass]="'inline'">
+  <select class="selectpicker show-tick"
+    (change)="searchByTopic()"
+    name="category"
+    [(ngModel)]="topicSearchItem">
+    <option value="Pickle Art">Pickle Art</option>
+    <option value="Pickle Books">Pickle Books</option>
+    <option value="Pickle Clothing">Pickle Clothing</option>
+    <option value="Pickle Cockatails">Pickle Cocktails</option>
+    <option value="Pickle DIY">Pickle DIY</option>
+    <option value="Pickle Facts">Pickle Facts</option>
+    <option value="Pickle History">Pickle History</option>
+    <option value="Pickle Home Decor">Pickle Home Decor</option>
+    <option value="Pickle Humor">Pickle Humor</option>
+    <option value="Pickle Photography">Pickle Photography</option>
+    <option value="Pickle Pop Culture">Pickle Pop Culture</option>
+    <option value="Pickle Recipes">Pickle Recipes</option>
+  </select>
+</form><br>
 
-  <a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
 
-  <br>
-  <span [ngClass]="'link'" [ngClass]="'left_margin'"> or search pickle pins by a topic</span>
+<h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ resMsg }}</h3>
 
-  <form>
-    <select 
-      (change)="searchByTopic()"
-      name="category"
-      [(ngModel)]="topicSearchItem">
-      <option value="Pickle Art">Pickle Art</option>
-      <option value="Pickle Books">Pickle Books</option>
-      <option value="Pickle Clothing">Pickle Clothing</option>
-      <option value="Pickle Cockatails">Pickle Cocktails</option>
-      <option value="Pickle DIY">Pickle DIY</option>
-      <option value="Pickle Facts">Pickle Facts</option>
-      <option value="Pickle History">Pickle History</option>
-      <option value="Pickle Home Decor">Pickle Home Decor</option>
-      <option value="Pickle Humor">Pickle Humor</option>
-      <option value="Pickle Photography">Pickle Photography</option>
-      <option value="Pickle Pop Culture">Pickle Pop Culture</option>
-      <option value="Pickle Recipes">Pickle Recipes</option>
-    </select>
-  </form>
+
+
 
   <h3>{{ topicMessage }}</h3>
 
@@ -46,4 +46,15 @@
   <div [ngClass]="'left_margin'">
   <app-pin *ngFor="let pin of allPins" [pin]="pin"></app-pin>
   </div>
+<a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
+
+<br>
+
+
+
+
+
+<hr>
+<div [ngClass]="'left_margin'">
+<app-pin *ngFor="let pin of allPins" [pin]="pin"></app-pin>
 </div>
