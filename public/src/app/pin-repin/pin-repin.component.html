@@ -1,4 +1,4 @@
-{{pin | json}}
+
 <div id='board' [ngClass]="{'hidden':section!=1}">
   <img id='small_image' src={{pin.image}} alt="">
     <form  id='board_select' #form2Data='ngForm' (submit)='submitBoard()'>
@@ -10,7 +10,7 @@
           <option *ngFor='let board of boards' value={{board._id}}>{{board.title}}-{{board.description}}</option>
           <option value='*new*'>Create a new board</option>
         </select>
-        <input type="submit" value='Save' [disabled]='!form2Data.valid'>
+        <input type="submit" [ngClass]="'button'" value='Save' [disabled]='!form2Data.valid'>
       </form>
 </div>
 

@@ -40,3 +40,9 @@ img{
     display: inline-block;
     vertical-align: top;
 }
+.go_back{
+    vertical-align: top;
+    color: #2D571A;
+    margin-left: 10px;
+
+}

@@ -18,14 +18,14 @@
 </div>
 
 <div id='photos' [ngClass]="{'hidden':section!=2}">
-  <button [ngClass]="'button'" (click)='goBack()'>Go back to enter a different url</button>
+  <a [ngClass]="'go_back'" (click)='goBack()'>Go back to enter a different url</a>
   <div class = 'image_display' *ngFor='let image of images'>
     <a (click)='updateImg(image)'><img src={{image}} alt="" onerror="this.style.display='none'"></a>
   </div>
 </div>
 
 <div id='board' [ngClass]="{'hidden':section!=3}">
-    <button [ngClass]="'button'" (click)='goBack()'>Go back to select a different image</button>
+    <a [ngClass]="'go_back'" (click)='goBack()'>Go back to select a different image</a>
   <img id='small_image' src={{pin.image}} alt="">
     <form  id='board_select' #form2Data='ngForm' (submit)='submitDescAndBoard()'>
         <input
@@ -46,8 +46,8 @@
       </form>
 </div>
 
-<div id='new_board' [ngClass]="{'hidden':section!=4}">
-  <button [ngClass]="'button'" (click)='goBack()'>Go back to select an existing board</button>
+<div id='new_board' [ngClass]="{'hidden':section!=4}" [ngClass]="'left_margin'">
+  <a [ngClass]="'go_back'" (click)='goBack()'>Go back to select an existing board</a>
   <form #boardForm="ngForm" (submit)="createBoard()">
       <label>Title</label>
       <input type="text"

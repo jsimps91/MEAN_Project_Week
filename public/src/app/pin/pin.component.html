@@ -3,7 +3,7 @@
     <div [style.background-image]="'url('+ pin.image +')'" [ngClass]="'pin'">
     </div>
     <div class="caption">
-      <h4 [ngClass]="'link'">{{pin.title}}</h4>
+      <h4 [ngClass]="'link'">{{pin.description}}</h4>
       <p [ngClass]="'link'" *ngIf='pin.repins == 1'>{{pin.repins}} repin</p>
       <p [ngClass]="'link'" *ngIf='pin.repins > 1'>{{pin.repins}} repins</p>
       <button [ngClass]="'button'" (click)='repin()'>Save</button>
