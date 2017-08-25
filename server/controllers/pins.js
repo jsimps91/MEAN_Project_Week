@@ -99,31 +99,34 @@ module.exports = {
     },
 
     getAllPins: function(req, res) {
-        // if(req.session.currUser) {
-        //     var topics = req.session.currUser.topics; 
-        //     var randTopic = topics[Math.floor(Math.random * topics.length)];           
-        // }
-        // var resArr = [];
+        if (req.session.currUser) {
+            var topics = req.session.currUser.topics;
+        }
+        var queryStr = "{$or:[";
+        for(var i = 0; i < topics.length - 1; i++) {
+            queryStr += "{category: ";
+            queryStr += topics[i];
+            queryStr += "},";
+        }
+        queryStr += "{category: ";
+        queryStr += topics[topics.length - 1];
+        queryStr += "}]}"
 
-        // Board.find({category: randTopic}).populate('pins').exec((err, boards) => {
-        //     var resArr = [];
-        //     for(var j = 0; j < boards.length; j++) {
-        //         for(var k = 0; k < boards[j].pins.length; k++) {
-        //             resArr.push(boards[j].pins[k]);
-        //         }
-        //     }
-        //     console.log('THE OFFICIAL RES ARR: ', resArr);            
-        // });
-
-        // //console.log('THE OFFICIAL RES ARR: ', resArr);
-        // res.json(resArr);
-        Pin.find({}, function(err, pins) {
+        Board.find(queryStr).populate("pins").exec(function(err, boards) {
             if (err) {
-                res.json(err);
+                console.log(err);
             } else {
-                res.json(pins);
+                var pinsArr = [];
+                for (var i = 0; i < boards.length; i++) {
+                    for (var j = 0; j < boards[i].pins.length; j++) {
+                        pinsArr.push(boards[i].pins[j]);
+                    }
+                };
+                console.log('BACK END, PINS ARRAY: ', pinsArr);
+                res.json({pinsArr})
+                
             }
-        });
+        })
     },
 
     updateRepins: function(req, res){
@@ -171,3 +174,11 @@ module.exports = {
     //     });
     // }
 };
+
+// Pin.find({}, function(err, pins) {
+//     if (err) {
+//         res.json(err);
+//     } else {
+//         res.json(pins);
+//     }
+// });

@@ -1,26 +1,21 @@
-<div [ngClass]="'inline'">
-<app-nav></app-nav>
-</div>
-<div [ngClass]="'inline'">
-<form (submit)='searchByUser()' #formData='ngForm' >
-  <input
-    type="text"
-    name="searchByUser"
-    [(ngModel)]='userSearchItem'
-    placeholder = 'Find a Pinackle user'>
-  <input [ngClass]="'button'" type="submit" value='search'>
-</form>
-</div>
+<div class="container">
+  <div [ngClass]="'inline'">
+  <app-nav></app-nav>
+  </div>
+  <div [ngClass]="'inline'">
+  <form (submit)='searchByUser()' #formData='ngForm' >
+    <input
+      type="text"
+      name="searchByUser"
+      [(ngModel)]='userSearchItem'
+      placeholder = 'Find a Pinackle user'>
+    <input [ngClass]="'button'" type="submit" value='search'>
+  </form>
+  </div>
 
-<h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ resMsg }}</h3>
-
-<a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
-
-<br>
-<span [ngClass]="'link'" [ngClass]="'left_margin'"> or search pickle pins by a topic</span>
-
-<form>
-  <select 
+<p [ngClass]="'inline'" [ngClass]="'link'" [ngClass]="'left_margin'"> or search pickle pins by a topic</p>
+<form [ngClass]="'inline'">
+  <select class="selectpicker show-tick"
     (change)="searchByTopic()"
     name="category"
     [(ngModel)]="topicSearchItem">
@@ -37,9 +32,27 @@
     <option value="Pickle Pop Culture">Pickle Pop Culture</option>
     <option value="Pickle Recipes">Pickle Recipes</option>
   </select>
-</form>
+</form><br>
 
-<h3>{{ topicMessage }}</h3>
+
+<h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ resMsg }}</h3>
+
+
+
+
+  <h3>{{ topicMessage }}</h3>
+
+  <hr>
+  <div [ngClass]="'left_margin'">
+  <app-pin *ngFor="let pin of allPins" [pin]="pin"></app-pin>
+  </div>
+<a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
+
+<br>
+
+
+
+
 
 <hr>
 <div [ngClass]="'left_margin'">

@@ -8,7 +8,9 @@ module.exports = {
     reg: function(req, res) {
         User.find({email: req.body.email}, function(error, user) {
             if (user.length >= 1) {
-                res.json(user);
+                res.json({
+                    'emailError': 'An account with that email already exists.  Please use a different email.'
+                });
             } else {
                 var newUser = new User({
                     fullName: req.body.fullName,
@@ -82,6 +84,30 @@ module.exports = {
                 res.json(user);
             }
         });
+    },
+
+    update: function(req, res){
+        User.findById(req.params.id, function(err ,user){
+            if(err){
+                console.log("COULD NOT FIND USER")
+            }
+            else{
+                user.fullName= req.body.fullName;
+                user.email= req.body.email;
+                user.age = req.body.age;
+                user.gender = req.body.gender;
+                user.save(function(err, user){
+                    if(err){
+                        console.log("Couldn't update user")
+                        res.json({message: "There was a problem updating your info!"})
+                    }
+                    else{
+                        console.log("User updated!")
+                        res.json({message: "Profile successfully updated", user: user})
+                    }
+                })
+            }
+        })
     },
 
     searchByUser: function(req, res) {

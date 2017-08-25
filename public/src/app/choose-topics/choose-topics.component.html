@@ -1,10 +1,10 @@
 
 
-<div id="container">
+<div id="container" class="thumbnail">
 
-  <h1>Please choose at least 3 pickle topics that interest you:</h1>
+  <h1 [ngClass]="'link'">Please choose at least 3 pickle topics that interest you:</h1>
 
-  <div 
+  <div class="img-thumbnail"
   class="topic" 
   [class.hovered]="mouseOvered" 
   (mouseover)="mouseOvered=true" 
@@ -173,7 +173,7 @@
     <h4>Pickle Recipes!</h4>
   </div>  
   <br>
-  <button id="continue" [disabled]="currUserTopics.length < 3" (click)="continue()">Continue</button>
+  <button id="continue"  [disabled]="currUserTopics.length < 3" (click)="continue()">Continue</button>
 
 
 
