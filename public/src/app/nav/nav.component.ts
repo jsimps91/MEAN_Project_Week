@@ -13,7 +13,7 @@ export class NavComponent implements OnInit {
 
   constructor(private _userService: UserService, private _router: Router) { }
 
-  currentUser: User;
+  currentUser = new User();
 
   ngOnInit() {
     this._userService.getCurrentUser()

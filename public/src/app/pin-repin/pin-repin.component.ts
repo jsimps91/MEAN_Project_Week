@@ -13,7 +13,7 @@ import { BoardService } from "../board.service";
 export class PinRepinComponent implements OnInit {
   section = 1;
 
-  pin: Pin;
+  pin = new Pin();
   pin_id;
 
   new_board = {
