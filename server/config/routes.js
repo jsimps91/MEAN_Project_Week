@@ -28,6 +28,10 @@ module.exports = function(app){
         users.follow(req, res);
     });
 
+    app.post('/api/unfollow', function(req, res){
+        users.unfollow(req, res);
+    });
+
     // board routes
     app.post('/api/create_board', function(req, res){
         console.log("CREATE BOARD MADE IT TO ROUTES", req.body)
