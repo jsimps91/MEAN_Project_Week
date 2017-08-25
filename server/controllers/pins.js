@@ -25,6 +25,7 @@ module.exports = {
                 source_link: req.body.source_link,
                 title: req.body.title,
                 image: req.body.image,
+                description: req.body.description,
                 repinned: req.body.repinned,
             });
             User.findOne({ _id: req.session.currUser._id }, function (err, user) {

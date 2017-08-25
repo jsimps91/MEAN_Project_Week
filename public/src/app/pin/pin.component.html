@@ -1,4 +1,4 @@
-<div class="img-thumbnail">
+<div class="img-thumbnail" [ngClass]="pin">
   <a [routerLink]="['/pin', pin._id]">
     <div [style.background-image]="'url('+ pin.image +')'" [ngClass]="'pin'">
     </div>

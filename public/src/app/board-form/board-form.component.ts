@@ -21,7 +21,7 @@ export class BoardFormComponent implements OnInit {
     this._boardService.createBoard(this.board)
     .then((response) =>{
       console.log("BOARD SUCCESSFULLY CREATED", response)
-      this._router.navigateByUrl('/home')
+      this._router.navigateByUrl(`/board/${response._id}`)
     })
   }
 }
