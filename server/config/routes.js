@@ -78,6 +78,7 @@ module.exports = function(app){
     });
 
     app.get('/api/getAllPins', function(req, res) {
+        console.log('AT ROUTING GETTING ALL PINS');
         pins.getAllPins(req, res);
     });
 

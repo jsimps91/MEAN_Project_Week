@@ -6,12 +6,23 @@
 img{
     width: 80%;
     display: block;
+    border-radius: 10px;
+    border: 3px solid lightgrey;
 }
 
 a{
     text-decoration: none;
+    margin-left: 0px;
+    padding-left: 0px;
 }
 
 .bold{
     font-weight: bold;
+}
+
+p, span {
+    margin: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
 }

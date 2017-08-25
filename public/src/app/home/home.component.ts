@@ -20,10 +20,12 @@ export class HomeComponent implements OnInit {
   pinArr;
 
   getAllPins() {
+    console.log('GETTING ALL PINS');
     this._pinService.getAllPins()
     .then(data => {
-      console.log(data.pinsArr);
-      this.pinArr = data.pinsArr;
+      console.log('RETURNED WITH THIS DATA', data);
+      this.pinArr = data;
+      console.log('THIS IS THE PIN ARRAY:', this.pinArr);
     })
     .catch(function(error) {
       console.log(error);
@@ -88,14 +90,18 @@ export class HomeComponent implements OnInit {
   topicMessage;
 
   searchByTopic() {
-    this._boardService.searchByTopic(this.topicSearchItem)
-    .then(data => {
-      this.topicMessage = data.message;
-      if (data.pins) {
-        this.pinArr = data.pins;
-      }
-    })
-    .catch(err => console.log(err));
+    if(this.topicSearchItem === "all") {
+      this.getAllPins();
+    } else {
+      this._boardService.searchByTopic(this.topicSearchItem)
+      .then(data => {
+        this.topicMessage = data.message;
+        if (data.pins) {
+          this.pinArr = data.pins;
+        }
+      })
+      .catch(err => console.log(err));
+    }
   }
 
 }

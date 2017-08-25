@@ -3,10 +3,10 @@
   <h1>{{pin.title}} <button [ngClass]="'button'" (click)='repin()'>Save</button></h1>
   <img src={{pin.image}} alt="Placeholder for pin image">
   <a [ngClass]="'link'" href={{pin.source_link}}>Read It</a>
-  <p>{{pin.description}}</p>
-  <p>Published {{pin.createdAt | date}}</p>
+  <p>"{{pin.description}}" published {{pin.createdAt | date}}</p>
+  <!-- <p>Published {{pin.createdAt | date}}</p> -->
   <p><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', pin._user._id]">{{pin._user.fullName}}</a></span> saved to <span class='bold'><a [ngClass]="'link'" [routerLink]="['/board', pin._board._id]">{{pin._board.title}}</a></span></p>
-  <p>{{pin._board.description}}</p>
+  <p>"{{pin._board.description}}"</p>
   <p *ngIf='pin.repins == 1'>{{pin.repins}} repin</p>
   <p *ngIf='pin.repins > 1'>{{pin.repins}} repins</p>
   <h4 [ngClass]="'link'">Comments</h4>
