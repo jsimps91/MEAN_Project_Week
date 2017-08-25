@@ -1,8 +1,8 @@
 <div class="img-thumbnail">
-  <a [routerLink]="['../pin', pin._id]">
+  <a [routerLink]="['/pin', pin._id]">
     <div [style.background-image]="'url('+ pin.image +')'" [ngClass]="'pin'">
     </div>
-    </a>
+  </a>
     <div class="caption">
       <p [ngClass]="'link'">{{pin.description}}</p>
       <p [ngClass]="'link'" *ngIf='pin.repins == 1'>{{pin.repins}} repin</p>

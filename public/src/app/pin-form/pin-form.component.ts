@@ -18,7 +18,7 @@ export class PinFormComponent implements OnInit {
     description: '', 
     category: '',
   }
-  
+  board_id;
   images = [];
   boards = [];
 
@@ -40,11 +40,12 @@ export class PinFormComponent implements OnInit {
   }
 
   submitDescAndBoard(){
+    this.board_id = this.pin.board
     if (this.pin.board == '*new*'){
       this.section += 1;
     } else {
       this._pinService.createPin(this.pin).then(response => {
-        this._router.navigateByUrl(`/pin/${response._id}`)
+        this._router.navigateByUrl(`/board/${this.board_id}`)
       }).catch(err => console.log(err));
     }
   }
