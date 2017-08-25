@@ -1,5 +1,5 @@
-{{pin | json}}
 <div id='board' [ngClass]="{'hidden':section!=1}">
+  <p *ngIf='pin._user._id == currentUser._id'>Psst - You have already pinned this on {{pin._board.title}}</p>
   <img id='small_image' src={{pin.image}} alt="">
     <form  id='board_select' #form2Data='ngForm' (submit)='submitBoard()'>
         <select name="board"
