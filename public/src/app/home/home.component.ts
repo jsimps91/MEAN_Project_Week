@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 import { PinService } from './../pin.service';
+import { BoardService } from './../board.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from "../user";
 import { Pin } from "../pin";
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   currentUser: User;
 
-  constructor(private _router: Router, private _userService: UserService, private _pinService: PinService) { }
+  constructor(private _router: Router, private _userService: UserService, private _pinService: PinService, private _boardService: BoardService) { }
 
   allPins;
 
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
   userSearchItem;
   resMsg;
   userSearchResults;  
-  
+
   ngOnInit() {
     this.getAllPins();
     this.getCurrUser();
@@ -52,8 +53,6 @@ export class HomeComponent implements OnInit {
     this.userSearchResults = [];
     this.resMsg = '';
   }
-
-
 
   searchByUser() {
     this._userService.searchByUser(this.userSearchItem)
@@ -71,6 +70,20 @@ export class HomeComponent implements OnInit {
 
   goToUser(id) {
     this._router.navigateByUrl(`/profile/${id}`);
+  }
+
+  topicSearchItem;
+  topicMessage;
+
+  searchByTopic() {
+    this._boardService.searchByTopic(this.topicSearchItem)
+    .then(data => {
+      this.topicMessage = data.message;
+      if (data.pins) {
+        this.allPins = data.pins;
+      }
+    })
+    .catch(err => console.log(err));
   }
 
 }

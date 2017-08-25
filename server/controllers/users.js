@@ -26,9 +26,9 @@ module.exports = {
                         req.session.currUser = newUser;
                         res.json(newUser);
                     }
-                })
+                });
             }
-        })
+        });
     },
 
 
@@ -45,11 +45,11 @@ module.exports = {
                         res.json({'error': 'Password is incorrect'});
                     }
                 } else {
-                    res.json({'error': 'That email is not in our database.  Please register to continue.'})
+                    res.json({'error': 'That email is not in our database.  Please register to continue.'});
                 }
                     
             }
-        })
+        });
     },
 
     logout: function(req, res) {
@@ -59,12 +59,12 @@ module.exports = {
             } else {
                 res.json({});
             }
-        })
+        });
     },
 
     getCurrentUser: function(req, res){
         if (req.session.currUser) {
-            let user = req.session.currUser
+            let user = req.session.currUser;
             res.json(user);        
         } else {
             res.json({});
@@ -73,7 +73,7 @@ module.exports = {
 
     showProfile: function(req, res){
         User.findOne({_id: req.params.id})
-        .populate('boards').populate('pins')
+        .populate('boards').populate('pins').populate('followers').populate('following')
         .exec(function(err, user){
             if(err){
                 console.log(err);
@@ -106,12 +106,35 @@ module.exports = {
                             'users': users,
                             'pins': pins,
                             'message': 'We found a user matching your search:'                            
-                        }
+                        };
                         res.json(resObj);                            
                     }
                 });
             }
-        })
-    }
+        });
+    },
 
+    follow: function (req, res){
+        User.findOne({_id: req.body.id}, function(err, user){
+            user.followers.push(req.session.currUser);
+            user.save(function (err){
+                if (err){
+                    console.log('Could not add follower');
+                } 
+                else {
+                    User.findOne({_id: req.session.currUser._id}, function(err, cuser){
+                        cuser.following.push(user);
+                        cuser.save(function(err){
+                            if (err){
+                                console.log('Could not add following');
+                            }
+                            else {
+                                res.json(cuser);
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    }
 };

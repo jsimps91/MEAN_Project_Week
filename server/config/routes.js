@@ -21,13 +21,17 @@ module.exports = function(app){
     });
 
     app.get('/api/show_user', function(req, res){
-        users.getCurrentUser(req, res)
+        users.getCurrentUser(req, res);
+    });
+
+    app.post('/api/follow', function(req, res){
+        users.follow(req, res);
     });
 
     // board routes
     app.post('/api/create_board', function(req, res){
         console.log("CREATE BOARD MADE IT TO ROUTES", req.body)
-        boards.create(req, res)
+        boards.create(req, res);
     });
 
     app.get('/api/show_profile/:id', function(req, res){
@@ -75,6 +79,11 @@ module.exports = function(app){
 
     app.post('/api/search_by_user', function(req, res) {
         users.searchByUser(req, res);
+    });
+
+    app.post('/api/searchByTopic', function(req, res) {
+        console.log('MADE IT TO THE ROUTES');
+        boards.searchByTopic(req, res);
     })
 
     // incorporate Angular for all other routes

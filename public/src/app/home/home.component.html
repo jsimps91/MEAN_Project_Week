@@ -8,7 +8,35 @@
     placeholder = 'Find a Pinackle user'>
   <input [ngClass]="'button'" type="submit" value='search'>
 </form>
+
 <h3>{{ resMsg }}</h3>
+
 <a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
+
+<br>
+<span>or search pickle pins by a topic</span>
+
+<form >
+  <select 
+    (change)="searchByTopic()"
+    name="category"
+    [(ngModel)]="topicSearchItem">
+    <option value="Pickle Art">Pickle Art</option>
+    <option value="Pickle Books">Pickle Books</option>
+    <option value="Pickle Clothing">Pickle Clothing</option>
+    <option value="Pickle Cockatails">Pickle Cocktails</option>
+    <option value="Pickle DIY">Pickle DIY</option>
+    <option value="Pickle Facts">Pickle Facts</option>
+    <option value="Pickle History">Pickle History</option>
+    <option value="Pickle Home Decor">Pickle Home Decor</option>
+    <option value="Pickle Humor">Pickle Humor</option>
+    <option value="Pickle Photography">Pickle Photography</option>
+    <option value="Pickle Pop Culture">Pickle Pop Culture</option>
+    <option value="Pickle Recipes">Pickle Recipes</option>
+  </select>
+</form>
+
+<h3>{{ topicMessage }}</h3>
+
 <hr>
 <app-pin *ngFor="let pin of allPins" [pin]="pin"></app-pin>

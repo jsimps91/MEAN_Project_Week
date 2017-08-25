@@ -47,5 +47,15 @@ export class ProfileComponent implements OnInit {
     this.view= "edit"
   }
 
+  followers(){
+    this.view= "followers"
+  }
 
+  following(){
+    this.view="following"
+  }
+
+  follow(id){
+    this._userService.followUser(id).then(response => console.log(response)).catch(err => console.log(err))
+  }
 }
