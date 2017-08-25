@@ -8,7 +8,9 @@ module.exports = {
     reg: function(req, res) {
         User.find({email: req.body.email}, function(error, user) {
             if (user.length >= 1) {
-                res.json(user);
+                res.json({
+                    'emailError': 'An account with that email already exists.  Please use a different email.'
+                });
             } else {
                 var newUser = new User({
                     fullName: req.body.fullName,
