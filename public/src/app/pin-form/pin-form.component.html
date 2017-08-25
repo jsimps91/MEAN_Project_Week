@@ -2,29 +2,30 @@
 <br>
 <div id='url' [ngClass]="{'hidden':section!=1}">
     <form #form1Data='ngForm' (submit)='submitUrl()'>
-      <h3>Save from a website:</h3> 
+      <h3 [ngClass]="'link'">Save from a website:</h3> 
       <input
+        [ngClass]="'left_margin'"
         type="text"
         name="source_link"
         required
         pattern='^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
         [(ngModel)]='pin.source_link'
         #source_link = 'ngModel'>
-      <input type="submit" value='Next' [disabled]='!form1Data.valid'>
+      <input [ngClass]="'button'" type="submit" value='Next' [disabled]='!form1Data.valid'>
       <p class='error' *ngIf='!form1Data.pristine && source_link.errors && source_link.errors.required'>Required</p>
       <p class='error' *ngIf='source_link.errors && source_link.errors.pattern'>Not a valid URL</p>
     </form>
 </div>
 
 <div id='photos' [ngClass]="{'hidden':section!=2}">
-  <button (click)='goBack()'>Go back to enter a different url</button>
+  <button [ngClass]="'button'" (click)='goBack()'>Go back to enter a different url</button>
   <div class = 'image_display' *ngFor='let image of images'>
     <a (click)='updateImg(image)'><img src={{image}} alt="" onerror="this.style.display='none'"></a>
   </div>
 </div>
 
 <div id='board' [ngClass]="{'hidden':section!=3}">
-    <button (click)='goBack()'>Go back to select a different image</button>
+    <button [ngClass]="'button'" (click)='goBack()'>Go back to select a different image</button>
   <img id='small_image' src={{pin.image}} alt="">
     <form  id='board_select' #form2Data='ngForm' (submit)='submitDescAndBoard()'>
         <input
@@ -41,12 +42,12 @@
           <option *ngFor='let board of boards' value={{board._id}}>{{board.title}}-{{board.description}}</option>
           <option value='*new*'>Create a new board</option>
         </select>
-        <input type="submit" value='Save' [disabled]='!form2Data.valid'>
+        <input [ngClass]="'button'" type="submit" value='Save' [disabled]='!form2Data.valid'>
       </form>
 </div>
 
 <div id='new_board' [ngClass]="{'hidden':section!=4}">
-  <button (click)='goBack()'>Go back to select an existing board</button>
+  <button [ngClass]="'button'" (click)='goBack()'>Go back to select an existing board</button>
   <form #boardForm="ngForm" (submit)="createBoard()">
       <label>Title</label>
       <input type="text"
@@ -56,19 +57,19 @@
       #title="ngModel"
       >
       <span *ngIf="title.errors">
-        <p *ngIf="title.errors.required">
+        <p [ngClass]="'link'" *ngIf="title.errors.required">
           Please give your board a title!
         </p>
       </span>
       <br>
-      <label>Description</label>
+      <label [ngClass]="'link'">Description</label>
       <input type="text"
       name="description"
       [(ngModel)]="new_board.description"
       #description="ngModel"
       >
       <br>
-      <label>Category</label>
+      <label [ngClass]="'link'">Category</label>
       <select name="category"
       required
       [(ngModel)]="new_board.category"
@@ -88,11 +89,11 @@
         <option value="Pickle Recipes">Pickle Recipes</option>
       </select>
       <span *ngIf="category.errors">
-        <p *ngIf="category.errors.required">
+        <p [ngClass]="'link'" *ngIf="category.errors.required">
           Please select a category
         </p>
       </span>
       <br>
-      <input type="submit" value="Create Board" [disabled]="!boardForm.valid">
+      <input [ngClass]="'button'" type="submit" value="Create Board" [disabled]="!boardForm.valid">
     </form>
 </div>

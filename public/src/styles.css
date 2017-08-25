@@ -10,3 +10,22 @@ p, label, h1, h2, h3, h4, h5, h6, legend, a, i{
     background-color: #2D571A;
     color: #E4E693;
 }
+
+.link{
+    margin-left: 10px;
+    color: #2D571A;
+}
+.inline{
+    display: inline-block;
+}
+.div{
+    padding-left: 10px;
+}
+.left_margin{
+    margin-left: 10px;
+}
+.board{
+    height: 350px;
+    width: 500px;
+    background-size: cover;
+}
