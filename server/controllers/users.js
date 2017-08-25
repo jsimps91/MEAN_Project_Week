@@ -26,9 +26,9 @@ module.exports = {
                         req.session.currUser = newUser;
                         res.json(newUser);
                     }
-                })
+                });
             }
-        })
+        });
     },
 
 
@@ -45,11 +45,11 @@ module.exports = {
                         res.json({'error': 'Password is incorrect'});
                     }
                 } else {
-                    res.json({'error': 'That email is not in our database.  Please register to continue.'})
+                    res.json({'error': 'That email is not in our database.  Please register to continue.'});
                 }
                     
             }
-        })
+        });
     },
 
     logout: function(req, res) {
@@ -59,12 +59,12 @@ module.exports = {
             } else {
                 res.json({});
             }
-        })
+        });
     },
 
     getCurrentUser: function(req, res){
         if (req.session.currUser) {
-            let user = req.session.currUser
+            let user = req.session.currUser;
             res.json(user);        
         } else {
             res.json({});
@@ -73,7 +73,7 @@ module.exports = {
 
     showProfile: function(req, res){
         User.findOne({_id: req.params.id})
-        .populate('boards').populate('pins')
+        .populate('boards').populate('pins').populate('followers').populate('following')
         .exec(function(err, user){
             if(err){
                 console.log(err);
@@ -106,7 +106,7 @@ module.exports = {
                             'users': users,
                             'pins': pins,
                             'message': 'We found a user matching your search:'                            
-                        }
+                        };
                         res.json(resObj);                            
                     }
                 });
@@ -115,7 +115,6 @@ module.exports = {
     },
 
     setTopics: function(req, res) {
-        console.log('AT THE DEEP BACK END', req.body)
         var currUser = req.session.currUser;
         User.findOne({email: currUser.email}, function(err, user) {
             user.topics = req.body;
@@ -123,11 +122,60 @@ module.exports = {
                 if(err) {
                     console.log(err);
                 } else {
-                    console.log('IT FUCKING WORKED');
                     res.json(user);
                 }
             })
         });
-    }
+    },
 
+
+    follow: function (req, res){
+        User.findOne({_id: req.body.id}, function(err, user){
+            user.followers.push(req.session.currUser);
+            user.save(function (err){
+                if (err){
+                    console.log('Could not add follower');
+                } 
+                else {
+                    User.findOne({_id: req.session.currUser._id}, function(err, cuser){
+                        cuser.following.push(user);
+                        cuser.save(function(err){
+                            if (err){
+                                console.log('Could not add following');
+                            }
+                            else {
+                                res.json(cuser);
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    },
+
+    unfollow: function (req, res){
+        User.findOne({_id: req.body.id}, function(err, user){
+            let removeFollower = user.followers.indexOf(req.session.currUser._id);
+            user.followers.splice(removeFollower, 1);
+            user.save(function (err){
+                if (err){
+                    console.log('Could not remove follower');
+                } 
+                else {
+                    User.findOne({_id: req.session.currUser._id}, function(err, cuser){
+                        let removeFollowing = cuser.following.indexOf(user._id);
+                        cuser.following.splice(removeFollowing, 1);
+                        cuser.save(function(err){
+                            if (err){
+                                console.log('Could not remove following');
+                            }
+                            else {
+                                res.json(cuser);
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    }
 };

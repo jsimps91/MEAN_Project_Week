@@ -1,4 +1,5 @@
-{{ currentUser | json }}
+<app-nav></app-nav>
+<br>
 <form #userForm="ngForm" (submit)="updateUser(currentUser._id)">
   <label for="fullName">Full Name</label>
   <input type ="text"

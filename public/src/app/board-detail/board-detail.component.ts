@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class BoardDetailComponent implements OnInit {
 
-  board: Board;
+  board = new Board();
   subscription: Subscription;
 
   constructor(private _route: ActivatedRoute,private _router: Router, private _boardService: BoardService) { }

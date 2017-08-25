@@ -10,7 +10,7 @@ import { Pin } from '../pin';
   styleUrls: ['./pin-detail.component.css']
 })
 export class PinDetailComponent implements OnInit {
-  pin: Pin;
+  pin = new Pin()
   pin_id;
   message = '';
   comments = [];

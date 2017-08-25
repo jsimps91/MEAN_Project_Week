@@ -1,6 +1,6 @@
-
-<button  (click)="logout()">Logout</button>
-
-<a [routerLink]="['/board/new']">New Board</a>
-<a [routerLink]="['/pin/new']">New Pin</a>
-<a *ngIf="currentUser" [routerLink]="['/profile', currentUser._id]">Profile</a>
+<div [ngClass]="'div'">
+    <a [ngClass]="'link'" (click)="logout()">Logout</a>
+    <a [ngClass]="'link'" [routerLink]="['/board/new']">New Board</a>
+    <a [ngClass]="'link'" [routerLink]="['/pin/new']">New Pin</a>
+    <a [ngClass]="'link'" *ngIf="currentUser" [routerLink]="['/profile', currentUser._id]">Profile</a>
+</div>

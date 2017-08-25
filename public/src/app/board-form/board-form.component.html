@@ -1,5 +1,6 @@
 <app-nav></app-nav>
 <br>
+<div [ngClass]="'div'">
 <form #boardForm="ngForm" (submit)="createBoard()">
   <label>Title</label>
   <input type="text"
@@ -46,5 +47,6 @@
     </p>
   </span>
   <br>
-  <input type="submit" value="Create Board" [disabled]="!boardForm.valid">
+  <input [ngClass]="'button'" type="submit" value="Create Board" [disabled]="!boardForm.valid">
 </form>
+</div>

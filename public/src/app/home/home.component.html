@@ -6,7 +6,7 @@
     name="searchByUser"
     [(ngModel)]='userSearchItem'
     placeholder = 'Find a Pinackle user'>
-  <input type="submit" value='search'>
+  <input [ngClass]="'button'" type="submit" value='search'>
 </form>
 
 <h3>{{ resMsg }}</h3>
