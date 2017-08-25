@@ -1,5 +1,7 @@
 <div [ngClass]="'div'">
-  
+  <div id="logo">
+    <img [src]="'assets/logo.png'">
+</div>  
     <fieldset>
       <legend>Login</legend>
       <form (submit)="loginAttempt()" #formData='ngForm'>

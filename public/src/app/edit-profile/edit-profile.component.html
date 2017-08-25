@@ -1,15 +1,10 @@
 <app-nav></app-nav>
 <br>
-<form #userForm="ngForm" (submit)="updateUser(currentUser._id)">
+<div [ngClass]="'left_margin'"> 
+  <form #userForm="ngForm" (submit)="updateUser(currentUser._id)">
   <label for="fullName">Full Name</label>
-  <input type ="text"
-  required
-  name="fullName"
-  value="currentUser.fullName
-  "
-  [(ngModel)]="user.fullName"
-  #fullName="ngModel"
-  >
+  <input type="text" required name="fullName" value="currentUser.fullName
+  " [(ngModel)]="user.fullName" #fullName="ngModel">
   <span *ngIf="fullName.errors">
     <p *ngIf="fullName.errors.required">
       Name is required!
@@ -17,56 +12,33 @@
   </span>
   <br>
   <label for="email">Email:</label>
-        <input 
-          type="text" 
-          id="email"
-          name="email"
-          value="currentUser.email"
-          required
-          [(ngModel)]="user.email"
-          #email="ngModel">
-    <span *ngIf="email.errors">
+  <input type="text" id="email" name="email" value="currentUser.email" required 
+  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+  [(ngModel)]="user.email" #email="ngModel">
+  <span *ngIf="email.errors">
       <p *ngIf="email.errors.required">
       Email required!
       </p>
+      <p *ngIf="email.errors.pattern">
+      Please enter a valid email address!
+      </p>
     </span>
-        <br>
-   <label for="age">Age:</label>
-        <input 
-          type="text" 
-          id="age" 
-          name="age"
-          value="currentUser.age"
-          required
-          [(ngModel)]="user.age"
-          #age="ngModel">
-    <span *ngIf="age.errors">
+  <br>
+  <label for="age">Age:</label>
+  <input type="text" id="age" name="age" value="currentUser.age" required [(ngModel)]="user.age" #age="ngModel">
+  <span *ngIf="age.errors">
       <p *ngIf="age.errors.required">
         Name is required!
       </p>
   </span>
-        <br>
-        Gender: 
-        <label for="male">Male</label>
-        <input type="radio" 
-          id="male" 
-          name="gender"
-          value="male"
-          required
-          [(ngModel)]="user.gender">
-        <label for="female">Female</label>
-        <input type="radio" 
-          id="female" 
-          name="gender"
-          value="female"
-          [(ngModel)]="user.gender">
-        <label for="other">Other</label>
-        <input type="radio" 
-          id="other" 
-          name="gender"
-          value="other"
-          [(ngModel)]="user.gender">
-        <br>  
-    <input type="submit" value="Update" [disabled]="!userForm.valid">
-</form>
-
+  <br> Gender:
+  <label for="male">Male</label>
+  <input type="radio" id="male" name="gender" value="male" required [(ngModel)]="user.gender">
+  <label for="female">Female</label>
+  <input type="radio" id="female" name="gender" value="female" [(ngModel)]="user.gender">
+  <label for="other">Other</label>
+  <input type="radio" id="other" name="gender" value="other" [(ngModel)]="user.gender">
+  <br>
+  <input [ngClass]="'button'" type="submit" value="Update" [disabled]="!userForm.valid">
+  </form>
+</div>

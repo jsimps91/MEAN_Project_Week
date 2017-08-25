@@ -12,7 +12,7 @@
     width: 20%;
     margin: 10px;
     padding: 10px;
-    border: 3px solid forestgreen;
+    border: 3px solid 	#457722
     display: inline-block;
     height: 250px;
     border-radius: 10px;
@@ -25,7 +25,7 @@
     height: 150;
     margin: 10px;
     border-radius: 5px;
-    border: 1px solid forestgreen;
+    border: 1px solid 	#457722
 }
 
 .hovered {

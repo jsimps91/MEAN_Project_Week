@@ -1,5 +1,5 @@
-
-<div id='board' [ngClass]="{'hidden':section!=1}">
+<app-nav></app-nav>
+<div [ngClass]="'left_margin'" id='board' [ngClass]="{'hidden':section!=1}">
   <img id='small_image' src={{pin.image}} alt="">
     <form  id='board_select' #form2Data='ngForm' (submit)='submitBoard()'>
         <select name="board"
