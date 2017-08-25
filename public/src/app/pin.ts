@@ -6,5 +6,7 @@ export class Pin {
         public description: string = '', 
         public board: string = '', 
         public repinned: boolean = false,
+        public repins = 0,
+        public comments = [],
     ){}
 }

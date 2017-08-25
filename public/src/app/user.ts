@@ -8,6 +8,7 @@ export class User {
         public boards = [],
         public pins = [],
         public followers = [],
-        public following = []
+        public following = [],
+        public _id = null,
     ) {}
 }

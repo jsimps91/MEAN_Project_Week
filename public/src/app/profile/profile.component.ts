@@ -12,10 +12,10 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ProfileComponent implements OnInit {
 
-  user: User
+  user = new User();
   subscription: Subscription
   view;
-  currentUser;
+  currentUser = new User();
 
   constructor(private _route: ActivatedRoute,private _router: Router, private _userService: UserService) { }
 
@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
         console.log("url id given is: ", params.get('id'));
         return this._userService.showProfile(params.get('id'));
       }).subscribe(user => this.user = user);
+    console.log(this.user);
     this.view = "boards";
     this._userService.getCurrentUser()
       .then(response => {
@@ -32,7 +33,6 @@ export class ProfileComponent implements OnInit {
         } else {
           this.currentUser = response          
         }
-
       })
       .catch(err => console.log(err));  
   }

@@ -11,7 +11,7 @@
 <h3 [ngClass]="'inline'" *ngIf="user.followers.length !=1"><a [ngClass]="'link'" (click)="followers()"> {{ user.followers.length }} Followers</a></h3>
 <h3 [ngClass]="'inline'" *ngIf="user.following.length ==1"><a [ngClass]="'link'" (click)="following()"> {{ user.following.length }} Following</a></h3>
 <h3 [ngClass]="'inline'" *ngIf="user.following.length !=1"><a [ngClass]="'link'" (click)="following()"> {{ user.following.length }} Following</a></h3>
-<h3 [ngClass]="'inline'" *ngIf="user._id==currentUser._id"><a ([ngClass]="'link'" click)="edit()">Edit My Profile</a></h3>
+<h3 [ngClass]="'inline'" *ngIf="user._id==currentUser._id"><a [ngClass]="'link'" (click)="edit()">Edit My Profile</a></h3>
 <h3 *ngIf='user._id!=currentUser._id'><a [ngClass]="'link'" (click)="follow(user._id)">Follow</a></h3>
 <div *ngIf="view=='boards'">
   <span *ngFor="let board of user.boards">
