@@ -86,7 +86,7 @@ module.exports = {
                         for (var j = 0; j < boards[i].pins.length; j++) {
                             pinsArr.push(boards[i].pins[j]);
                         }
-                    };
+                    }
                     console.log('BACK END, PINS ARRAY: ', pinsArr);
                     res.json({
                         'message': 'Here are some pins!',
