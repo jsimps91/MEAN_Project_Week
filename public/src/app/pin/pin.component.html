@@ -1,7 +1,8 @@
-<div class="img-thumbnail" [ngClass]="pin">
+<div class="img-thumbnail" id='mini_pin_container'>
   <a [routerLink]="['/pin', pin._id]">
-    <div [style.background-image]="'url('+ pin.image +')'" [ngClass]="'pin'">
-    </div>
+    <!-- <div [style.background-image]="'url('+ pin.image +')'" [ngClass]="'pin_image'">
+    </div> -->
+    <img src={{pin.image}} alt="" [ngClass]="'pin_image'">
   </a>
     <div class="caption">
       <p [ngClass]="'link'">{{pin.description}}</p>
