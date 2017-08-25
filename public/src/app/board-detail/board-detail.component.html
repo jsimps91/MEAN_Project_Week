@@ -1,3 +1,4 @@
+<div class="container">
 <app-nav></app-nav>
 
 <div [ngClass]="'left_margin'">
@@ -11,4 +12,5 @@
     <div [ngClass]="'inline'" *ngFor="let pin of board.pins">
         <app-pin [pin]="pin"></app-pin>
     </div>
+</div>
 </div>
