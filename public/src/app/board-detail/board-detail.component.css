@@ -16,3 +16,8 @@
 .container {
     width: 1350px;
 }
+.board_pins{
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+}
