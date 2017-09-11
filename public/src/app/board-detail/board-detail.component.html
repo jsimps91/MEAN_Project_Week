@@ -1,16 +1,15 @@
 <div class="container">
-<app-nav></app-nav>
-
-<div [ngClass]="'left_margin'">
-    <h2 [ngClass]="'link'" [ngClass]="'inline'">{{ board.title }}</h2> 
+    <app-nav></app-nav>
+    <div [ngClass]="'left_margin'">
+    <h2 [ngClass]="'link'" [ngClass]="'inline'">{{ board.title }}</h2>
     <h5 [ngClass]="'link'" [ngClass]="'inline'"><a [ngClass]="'link'" [routerLink]="['/profile', board._user._id]">by {{ board._user.fullName}}</a></h5>
     <h5 [ngClass]="'link'">{{ board.description }}</h5>
     <h4 [ngClass]="'link'">Category: {{ board.category }}</h4>
     <h5 [ngClass]="'link'" *ngIf="board.pins.length==1">{{ board.pins.length }} pin</h5>
     <h5 [ngClass]="'link'" *ngIf="board.pins.length != 1">{{ board.pins.length }} pins</h5>
 
-    
-        <app-pin  class="board_pins" *ngFor="let pin of board.pins"  [ngClass]="'pin'" [pin]="pin"></app-pin>
-   
+    <div id="columns">
+        <app-pin  *ngFor="let pin of board.pins" class="board_pins" [pin]="pin"></app-pin>
+    </div>
 </div>
 </div>

@@ -1,23 +1,27 @@
-#new-pin{
-    display: inline-block;
-    vertical-align: top;
-}
 
-#board_pin_display{
-    column-width: 320px;
-    column-gap: 2px;
-    columns:3; 
-    width: 90%;
-    max-width: 970px;
-    margin: auto;
-    text-align:center;
-}
 
 .container {
-    width: 1350px;
+    max-width: 1340px;
 }
 .board_pins{
     display: inline-block;
     vertical-align: top;
-    margin: 10px;
+    margin: 0 2px 15px;
+	padding: 15px;
+	padding-bottom: 5px;
+    -webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+   
+}
+#columns {
+    -webkit-column-width: 220px;
+	column-width: 220px;
+	column-gap: 0;
+    max-width: 970px;
+    margin: 2px auto;
+    margin-left: 0px;
+    -webkit-column-count: auto;
+    column-count: auto;
+    -webkit-column-fill: auto;
+    column-fill: auto;
 }
