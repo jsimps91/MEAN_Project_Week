@@ -18,16 +18,12 @@
 <h3 *ngIf='user._id!=currentUser._id && currentUser.following.indexOf(user._id) == -1'><a [ngClass]="'link'" (click)="follow(user._id)">Follow</a></h3>
 <h3 *ngIf='user._id!=currentUser._id && currentUser.following.indexOf(user._id) > -1'><a [ngClass]="'link'" (click)="unfollow(user._id)">Unfollow</a></h3>
 <div *ngIf="view=='boards'">
-  <span  *ngFor="let board of user.boards" [ngClass]="'inline'">
-    <span class="boards">
-    <app-board [board]="board"></app-board>
-    </span>
-  </span>
-  </div>
-  <div *ngIf="view=='pins'">
-    <span *ngFor="let pin of user.pins">
-    <app-pin [pin]="pin"></app-pin>
-  </span>
+  <div id="board_columns">
+    <app-board *ngFor="let board of user.boards" class="boards" [board]="board"></app-board>
+  </div>  
+</div>
+  <div id="columns" *ngIf="view=='pins'">
+    <app-pin *ngFor="let pin of user.pins" class="pins" [pin]="pin"></app-pin>
   </div>
 </div>
 <app-edit-profile *ngIf="view=='edit'" [currentUser]="currentUser"></app-edit-profile>

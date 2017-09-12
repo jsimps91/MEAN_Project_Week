@@ -8,3 +8,44 @@ span{
 .container {
     width: 1350px;
 }
+.pins{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 2px 15px;
+	padding: 15px;
+	padding-bottom: 5px;
+    -webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+   
+}
+#columns {
+    -webkit-column-width: 220px;
+	column-width: 220px;
+	column-gap: 0;
+    max-width: 1250px;
+    margin: 2px auto;
+    -webkit-column-count: auto;
+    column-count: auto;
+    -webkit-column-fill: auto;
+    column-fill: auto;
+}
+.boards{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 2px 15px;
+	padding: 15px;
+	padding-bottom: 5px;
+    -webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+}
+#board_columns{
+    -webkit-column-width: 650px;
+    column-width: 650px;
+    max-width: 1150px;
+    column-gap: 0;
+    margin: 2px auto;
+    -webkit-column-count: auto;
+    column-count: auto;
+    -webkit-column-fill: auto;
+    column-fill: auto;
+}

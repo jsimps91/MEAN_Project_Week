@@ -23,7 +23,6 @@ form {
 	column-gap: 0;
     max-width: 1300px;
     margin: 2px auto;
-    margin-left: 0px;
     -webkit-column-count: auto;
     column-count: auto;
     -webkit-column-fill: auto;
