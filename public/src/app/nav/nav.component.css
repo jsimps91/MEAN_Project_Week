@@ -7,3 +7,6 @@ nav{
     display: inline-block;
     vertical-align: top;
 }
+#logout:hover{
+  cursor:pointer;
+}

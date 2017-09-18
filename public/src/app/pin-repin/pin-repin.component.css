@@ -16,3 +16,6 @@ img{
     display: inline-block;
     vertical-align: top;
 }
+.container {
+    width: 1350px;
+}

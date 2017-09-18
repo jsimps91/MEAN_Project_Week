@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrUser();    
-    this.getRelevantPins();
+    this.getAllPins();
     this.userSearchItem = '';
     this.userSearchResults = [];
     this.resMsg = '';

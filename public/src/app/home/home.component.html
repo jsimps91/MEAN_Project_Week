@@ -46,14 +46,14 @@
 <h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ resMsg }}</h3>
 
 
+<h4><a [ngClass]="'link'" [ngClass]="'left-margin'" *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}</a></h4>
 
-
-  <h3>{{ topicMessage }}</h3>
+  <h3 [ngClass]="'link'" [ngClass]="'left-margin'">{{ topicMessage }}</h3>
 
   <hr>
   <div [ngClass]="'left_margin'" id="columns">
   <app-pin *ngFor="let pin of pinArr" [pin]="pin" [ngClass]="'pin'" class="pins"></app-pin>
   </div>
-<a *ngFor="let user of userSearchResults" (click)="goToUser(user._id)">{{ user.fullName }}<br></a>
+
 
 </div>

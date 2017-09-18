@@ -1,3 +1,4 @@
+<div class="container">
 <app-nav></app-nav>
 <div id='board' [ngClass]="{'hidden':section!=1}">
   <p *ngIf='pin._user._id == currentUser._id'>Psst - You have already pinned this on {{pin._board.title}}</p>
@@ -65,4 +66,5 @@
       <br>
       <input type="submit" value="Create Board" [disabled]="!boardForm.valid">
     </form>
+</div>
 </div>
