@@ -1,81 +1,82 @@
+<script type="text/javascript">
+  $(window).on('load', function () {
+    $('#pinModal').modal('show');
+  });
+
+</script>
+
 <div class="container">
-<app-nav></app-nav>
-<br>
-<div id='url' [ngClass]="{'hidden':section!=1}">
-    <form #form1Data='ngForm' (submit)='submitUrl()'>
-      <h3 [ngClass]="'link'">Save from a website:</h3> 
-      <input
-        [ngClass]="'left_margin'"
-        type="text"
-        name="source_link"
-        required
-        pattern='^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
-        [(ngModel)]='pin.source_link'
-        #source_link = 'ngModel'>
-      <input [ngClass]="'button'" type="submit" value='Next' [disabled]='!form1Data.valid'>
-      <p class='error' *ngIf='!form1Data.pristine && source_link.errors && source_link.errors.required'>Required</p>
-      <p class='error' *ngIf='source_link.errors && source_link.errors.pattern'>Not a valid URL</p>
-    </form>
-</div>
+  <app-nav></app-nav>
+  <br><br>
+  <div id="pinModal" class="modal show" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content" [ngClass]="{'hidden':section!=1}">
+        <div class="modal-header">
+          <h3 [ngClass]="'link'">Save from a website:</h3>
+        </div>
+        <div class="modal-body">
+          <form #form1Data='ngForm' (submit)='submitUrl()'>
+            <div class="form-group">
+              <input style="width: 100%" type="text" name="source_link" required pattern='^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)'
+                [(ngModel)]='pin.source_link' #source_link='ngModel'>
+            </div>
+            <input [ngClass]="'button'" type="submit" value='Next' [disabled]='!form1Data.valid'>
+            <p class='error' *ngIf='!form1Data.pristine && source_link.errors && source_link.errors.required'>Required</p>
+            <p class='error' *ngIf='source_link.errors && source_link.errors.pattern'>Not a valid URL</p>
+          </form>
+        </div>
+      </div>
 
-<div id='photos' [ngClass]="{'hidden':section!=2}">
-  <h5><a [ngClass]="'go_back'"  (click)='goBack()'>Go back to enter a different url</a></h5>
-  <div class = 'image_display' *ngFor='let image of images'>
-    <a (click)='updateImg(image)'><img src={{image}} alt="" onerror="this.style.display='none'"></a>
-  </div>
-</div>
+      <div id='photos' class="modal-content" [ngClass]="{'hidden':section!=2}">
+        <div class="modal-header">
+          <h5><a [ngClass]="'go_back'" (click)='goBack()'>Go back to enter a different url</a></h5>
+        </div>
+        <div class="modal-body" class='image_display' *ngFor='let image of images'>
+          <a (click)='updateImg(image)'><img src={{image}} alt="" onerror="this.style.display='none'"></a>
+        </div>
+      </div>
 
-<div id='board' [ngClass]="{'hidden':section!=3}">
-   <h5> <a [ngClass]="'go_back'"  (click)='goBack()'>Go back to select a different image</a></h5>
-  <img id='small_image' src={{pin.image}} alt="">
-    <form  id='board_select' #form2Data='ngForm' (submit)='submitDescAndBoard()'>
-        <input
-          type="text"
-          name="description"
-          [(ngModel)]='pin.description'
-          #description = 'ngModel'
-          placeholder = 'Tell us about this Pin...'><br/>
-        <select name="board"
-          required
-          [(ngModel)]="pin.board"
-          #board="ngModel"
-        >
-          <option *ngFor='let board of boards' value={{board._id}}>{{board.title}}</option>
-          <option value='*new*'>Create a new board</option>
-        </select>
-        <input [ngClass]="'button'" type="submit" value='Save' [disabled]='!form2Data.valid'>
-      </form>
-</div>
+      <div id='board' class="modal-content" [ngClass]="{'hidden':section!=3}">
+        <div class="modal-header">
+          <h5> <a [ngClass]="'go_back'" (click)='goBack()'>Go back to select a different image</a></h5>
+        </div>
+        <div class="modal-body">
+          <img id='small_image' src={{pin.image}} alt="">
+          <form id='board_select' class="form-inline" #form2Data='ngForm' (submit)='submitDescAndBoard()'>
+            <div class="form-group">
+              <input type="text"  class="form-control" name="description" [(ngModel)]='pin.description' #description='ngModel' placeholder='Tell us about this Pin...'>
+            </div>
+            <div class="form-group">
+              <select name="board" class="form-control" required [(ngModel)]="pin.board" #board="ngModel">
+                  <option value="" disabled selected hidden>Select Board</option>
+                <option *ngFor='let board of boards' value={{board._id}}>{{board.title}}</option>
+                <option value='*new*'>Create a new board</option>
+              </select>
+            </div>
+              <input [ngClass]="'button'" type="submit" value='Save' [disabled]='!form2Data.valid'>
+          </form>
+        </div>
+      </div>
 
-<div id='new_board' [ngClass]="{'hidden':section!=4}" [ngClass]="'left_margin'">
-  <a [ngClass]="'go_back'" (click)='goBack()'>Go back to select an existing board</a>
-  <form #boardForm="ngForm" (submit)="createBoard()">
-      <label [ngClass]="'link'">Title</label>
-      <input type="text"
-      name="title"
-      required
-      [(ngModel)]="new_board.title"
-      #title="ngModel"
-      >
-      <span *ngIf="title.errors">
+      <div id='new_board' class="modal-content" [ngClass]="{'hidden':section!=4}" [ngClass]="'left_margin'">
+        <div class="modal-header">
+          <a [ngClass]="'go_back'" (click)='goBack()'>Go back to select an existing board</a>
+        </div>
+        <div class="modal-body">
+          <form #boardForm="ngForm" (submit)="createBoard()">
+            <label [ngClass]="'link'">Title</label>
+            <input type="text" name="title" required [(ngModel)]="new_board.title" #title="ngModel">
+            <span *ngIf="title.errors">
         <p style="display: inline-block" [ngClass]="'link'" *ngIf="title.errors.required">
           Please give your board a title!
         </p>
       </span>
-      <br>
-      <label [ngClass]="'link'">Description</label>
-      <input type="text"
-      name="description"
-      [(ngModel)]="new_board.description"
-      #description="ngModel"
-      >
-      <br>
-      <label [ngClass]="'link'">Category</label>
-      <select name="category"
-      required
-      [(ngModel)]="new_board.category"
-      #category="ngModel"
-      >
+            <br>
+            <label [ngClass]="'link'">Description</label>
+            <input type="text" name="description" [(ngModel)]="new_board.description" #description="ngModel">
+            <br>
+            <label [ngClass]="'link'">Category</label>
+            <select name="category" required [(ngModel)]="new_board.category" #category="ngModel">
         <option value="Pickle Art">Pickle Art</option>
         <option value="Pickle Books">Pickle Books</option>
         <option value="Pickle Clothing">Pickle Clothing</option>
@@ -89,13 +90,17 @@
         <option value="Pickle Pop Culture">Pickle Pop Culture</option>
         <option value="Pickle Recipes">Pickle Recipes</option>
       </select>
-      <span *ngIf="category.errors">
+            <span *ngIf="category.errors">
         <p [ngClass]="'link'" *ngIf="category.errors.required">
           Please select a category
         </p>
       </span>
-      <br>
-      <input [ngClass]="'button'" type="submit" value="Create Board" [disabled]="!boardForm.valid">
-    </form>
-</div>
+            <div class="modal-footer">
+              <input [ngClass]="'button'" type="submit" value="Create Board" [disabled]="!boardForm.valid">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -17,5 +17,19 @@ img{
     vertical-align: top;
 }
 .container {
-    width: 1350px;
+    width: 1350px
+}
+.nav{
+    padding-top: 20px;
+}
+a:hover{
+    cursor: pointer;
+}
+#repinModal{
+    position: absolute;
+    top: 20%
+}
+#boardModal{
+    position: absolute;
+    top: 20%
 }

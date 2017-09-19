@@ -27,6 +27,7 @@
 }
 
 img{
+    margin-top: 5%;
     width: 80%;
 }
 
@@ -34,11 +35,13 @@ img{
     width: 20%;
     display: inline-block;
     margin-right: 20px;
+    vertical-align: top;
+    margin-top: 0;
 }
 
 #board_select{
     display: inline-block;
-    vertical-align: top;
+    margin-top: 0;
 }
 .go_back{
     vertical-align: top;
@@ -48,4 +51,12 @@ img{
 }
 .container {
     width: 1350px;
+}
+a:hover {
+    cursor: pointer;
+}
+#pinModal{
+    position: absolute;
+    top: 20%;
+    padding: 10%;
 }

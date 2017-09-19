@@ -11,3 +11,7 @@ input {
 .container {
     width: 1350px;
 }
+#boardModal{
+    position: absolute;
+    top: 20%
+}

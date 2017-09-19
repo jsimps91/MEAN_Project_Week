@@ -1,3 +1,7 @@
 .red {
     color: red;
 }
+#pickleModal{
+    position: absolute;
+    top: 20%
+}
