@@ -1,25 +1,26 @@
-<app-nav></app-nav>
-<div id='pinfo'>
-  <h1>{{pin.title}} <button [ngClass]="'button'" (click)='repin()'>Save</button></h1>
-  <img src={{pin.image}} alt="Placeholder for pin image">
-  <div id='text'>
-    <p><a class = 'unindent2 bold' [ngClass]="'link'" href={{pin.source_link}}>Read It</a></p>
-    <p>{{pin.description}}</p>
-    <p>Published {{pin.createdAt | date}}</p>
-    <p class = 'unindent2'><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', pin._user._id]">{{pin._user.fullName}}</a></span> saved to <span class='bold'><a [ngClass]="'link'" [routerLink]="['/board', pin._board._id]">{{pin._board.title}}</a></span></p>
-    <p>{{pin._board.description}}</p>
-    <p *ngIf='pin.repins == 1'>{{pin.repins}} repin</p>
-    <p *ngIf='pin.repins > 1'>{{pin.repins}} repins</p>
-    <h4 class = 'unindent2' [ngClass]="'link'">Comments</h4>
-    <div>
-      <div id='comment' *ngFor='let comment of comments'>
-        <p><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', comment._user]">{{ comment.commenter }}</a></span> - {{ comment.content }}</p>
-      </div>
-      <div id='comment form'>
+<div class="container">
+  <div id="nav">
+    <app-nav></app-nav>
+  </div>
+  <div class="img-thumbnail" id='pinfo'>
+
+      <h3 id="title" [ngClass]="'link'">{{pin.title}}</h3>
+      <h3 id="save"><button [ngClass]="'button'" (click)='repin()'>Save</button></h3>
+
+    <a href={{pin.source_link}}><img id="pin_image" src={{pin.image}} alt="Placeholder for pin image"></a>
+    <div id='text' class="caption">
+      <p>{{pin.description}}</p>
+      <p>Published {{pin.createdAt | date}}</p>
+      <p><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', pin._user._id]">{{pin._user.fullName}}</a></span>        saved to <span class='bold'><a [ngClass]="'link'" [routerLink]="['/board', pin._board._id]">{{pin._board.title}}</a></span></p>
+      <p *ngIf='pin.repins == 1'>{{pin.repins}} repin</p>
+      <p *ngIf='pin.repins > 1'>{{pin.repins}} repins</p>
+      <h4 id="comments" >Comments</h4>
+        
+          <p *ngFor='let comment of comments'><span class='bold'><a [ngClass]="'link'" [routerLink]="['/profile', comment._user]">{{ comment.commenter }}</a></span>            - {{ comment.content }}</p>
           <form (submit)='sendComment()'>
-            <input type="text" name='message' [(ngModel)]='message'>
-          </form>
-      </div>
+              <input type="text" name='message' class="form-control" placeholder="Leave a comment..." [(ngModel)]='message'>
+            </form>
     </div>
+
   </div>
 </div>

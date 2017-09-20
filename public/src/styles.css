@@ -2,6 +2,9 @@
 p, label, h1, h2, h3, h4, h5, h6, legend, a, i{
     color: #2D571A;
 }
+h2{
+    color: #2D571A; 
+}
 
 .green{
     color: #2D571A;
